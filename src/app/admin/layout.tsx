@@ -1,7 +1,15 @@
 import Sidebar from "@/features/admin/sidebar";
+import authentication from "@/shared/permission/user-permission";
+import { redirect } from "next/navigation";
 import React from "react";
 
-function AdminLayout({ children }: { children: React.ReactNode }) {
+async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const user = await authentication();
+
+  if (!user) {
+    redirect("/sign-in");
+  }
+  
   return (
     <div className="bg-slate-50 w-full min-h-screen">
       <div className="hidden md:flex w-72 flex-col fixed inset-y-0 z-50">

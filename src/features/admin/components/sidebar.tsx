@@ -35,6 +35,14 @@ function Sidebar() {
             <Link href="/admin/categories">Categories</Link>
           </span>
         </div>
+        <div className="flex-1">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            amet suscipit harum unde ea explicabo velit dolores at! Repellendus
+            blanditiis nostrum laborum porro et error totam quibusdam a
+            doloribus nisi?
+          </p>
+        </div>
       </div>
     </div>
   );

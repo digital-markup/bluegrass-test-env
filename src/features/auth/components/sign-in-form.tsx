@@ -5,8 +5,14 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import formSchema from "../auth-validation";
+import loginAction from "../actions/auth-action";
+import Loader from "@/components/loader";
+import AuthError from "./auth-error";
 
 function SignInForm() {
+  // loading state
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
   // Form validation
   const {
     register,
@@ -17,11 +23,21 @@ function SignInForm() {
   });
 
   const onSubmit = (formData: z.infer<typeof formSchema>) => {
-    console.log(formData);
+    setLoading(true);
+    const login = loginAction(formData.emailAddress, formData.password);
+    login
+      .then((response) => {
+        setError(response.message);
+        console.log(response);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      {error && <AuthError error={error} />}
       <div className="form-input">
         <label htmlFor="email">Email</label>
         <input
@@ -53,7 +69,7 @@ function SignInForm() {
       </div>
       <div className="pt-2">
         <button type="submit" className="btn-primary">
-          Login
+          {loading ? <Loader text="Signing In" /> : "Continue"}
         </button>
       </div>
     </form>

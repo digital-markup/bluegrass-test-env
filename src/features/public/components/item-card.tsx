@@ -10,11 +10,18 @@ function ItemCard() {
       <div className="flex flex-col gap-y-2">
         <figure className="text-center mb-3">
           <Image
-            src={"/img/iphone-16.jpeg"}
+            src={
+              "https://i.ibb.co/TLWCC4P/iphone-card-40-iphone16hero-202409.jpg"
+            }
             alt="apple"
             height={200}
             width={200}
             className="object-center w-[320px]"
+            placeholder="blur"
+            blurDataURL={
+              "https://i.ibb.co/TLWCC4P/iphone-card-40-iphone16hero-202409.jpg"
+            }
+            decoding="async"
           />
         </figure>
         <h3 className="text-lg font-medium">Product Name</h3>

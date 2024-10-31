@@ -1,4 +1,4 @@
-import Sidebar from "@/features/admin/sidebar";
+import Sidebar from "@/features/admin/components/sidebar";
 import authentication from "@/shared/permission/user-permission";
 import { redirect } from "next/navigation";
 import React from "react";

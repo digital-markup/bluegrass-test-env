@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ProductMediaUpload from "./product-media-uploader";
 
 function ProductInfoFormSection() {
   return (
@@ -30,20 +31,7 @@ function ProductInfoFormSection() {
         </section>
       </div>
       <div className="form-item-space">
-        <div className="flex gap-x-2 items-end">
-          <section className="flex flex-col space-y-2">
-            <label
-              htmlFor="mainImage"
-              className="text-sm text-slate-500 font-medium"
-            >
-              Primary Image
-            </label>
-            <input type="file" id="file" className="form-control" />
-          </section>
-          <button type="button" className="btn-primary">
-            Upload Image
-          </button>
-        </div>
+        <ProductMediaUpload />
       </div>
       <div className="form-item-space">
         <section className="flex flex-col space-y-2 w-full">

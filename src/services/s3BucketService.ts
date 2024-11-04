@@ -11,8 +11,6 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 
 const s3BucketService = async (body: Buffer, contentType: string) => {
 
-    // const buffer = await sharp(body).resize({ width: 1920, height: 1080, fit: "contain" }).toBuffer();
-
     const fileObject = {
         Bucket: process.env.BUCKET_NAME!,
         Key: randomGenerator(),
@@ -21,14 +19,22 @@ const s3BucketService = async (body: Buffer, contentType: string) => {
     };
 
     const command = new PutObjectCommand({
-        Bucket: `${fileObject.Bucket}/images`,
-        Key: fileObject.Key,
+        Bucket: fileObject.Bucket,
+        Key: `images/${fileObject.Key}`,
         Body: fileObject.Body,
         ContentType: fileObject.ContentType
     });
 
     const response = await awsClient.send(command);
-    console.log({ response });
+    if (response) {
+        return {
+            status: response.$metadata.httpStatusCode,
+            key: fileObject.Key,
+            message: "File uploaded successfully"
+        };
+    }
+
+    throw new Error("File upload failed");
 };
 
 

@@ -4,23 +4,27 @@ import React from "react";
 import FileUpload from "@/components/file-upload";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
+import uploadFile from "../services/uploadProcess";
 
 function ProductMediaUpload() {
+  // image upload state
+  const [imageBuffer, setImageBuffer] = React.useState<string | null>(null);
+
   const onDrop = React.useCallback((acceptedFiles: File[]) => {
+    // foreach the accepted files
     acceptedFiles.forEach((file) => {
+      // create a reader
       const reader = new FileReader();
 
-      reader.onabort = () => console.log("file reading was aborted");
-      reader.onerror = () => console.log("file reading has failed");
       reader.onload = () => {
-        // Do whatever you want with the file contents
-        const binaryStr = reader.result;
-        console.log({
-          file: file,
-          readerResult: binaryStr,
-        });
+        const result = reader.result as string;
+        // Remove the data URL prefix to get just the base64 data
+        const base64Data = result.split(",")[1];
+        setImageBuffer(base64Data);
       };
-      reader.readAsArrayBuffer(file);
+
+      // read the file as base64
+      reader.readAsDataURL(file);
     });
   }, []);
 
@@ -34,6 +38,15 @@ function ProductMediaUpload() {
       "video/mp4": [],
     },
   });
+
+  const onUploadFileHandler = () => {
+    if (imageBuffer) {
+      const upload = uploadFile(imageBuffer);
+      upload.then((result) => {
+        console.log(result);
+      });
+    }
+  };
 
   return (
     <div className="flex w-full gap-x-2 items-end justify-start">
@@ -49,7 +62,14 @@ function ProductMediaUpload() {
         </div>
       </section>
       <div className="w-[150px] justify-center flex">
-        <Button variant={"secondary"}>Upload</Button>
+        <Button
+          type="button"
+          variant={"secondary"}
+          disabled={!imageBuffer}
+          onClick={onUploadFileHandler}
+        >
+          Upload
+        </Button>
       </div>
     </div>
   );

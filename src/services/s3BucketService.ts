@@ -1,3 +1,4 @@
+"use server";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // 1. create an async function that accepts (key = file name, body = file.buffer, contentType = file.mimetype)
 // 2. change the key name into a random name to avoid object overriding
@@ -7,9 +8,10 @@
 
 import randomGenerator from "@/actions/randomNameGen";
 import { awsClient } from "@/utils/aws/client";
-import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 
-const s3BucketService = async (body: Buffer, contentType: string) => {
+const putS3ObjectService = async (body: Buffer, contentType: string) => {
 
     const fileObject = {
         Bucket: process.env.BUCKET_NAME!,
@@ -37,5 +39,45 @@ const s3BucketService = async (body: Buffer, contentType: string) => {
     throw new Error("File upload failed");
 };
 
+// Get signed url
+const getS3ObjectService = async (key: string) => {
+    // get the file using key
+    const getObject = {
+        Bucket: process.env.BUCKET_NAME as string,
+        Key: `images/${key}`
+    };
+    const command = new GetObjectCommand(getObject);
+    const url = await getSignedUrl(awsClient, command, { expiresIn: 3600 });
 
-export default s3BucketService;
+    if (url) {
+        return {
+            status: 200,
+            url
+        }
+    }
+
+    throw new Error("File download failed");
+}
+
+// Delete S3 object
+const deleteS3ObjectService = async (key: string) => {
+    const getObject = {
+        Bucket: process.env.BUCKET_NAME as string,
+        Key: `images/${key}`
+    };
+
+    const command = new DeleteObjectCommand(getObject);
+    const response = await awsClient.send(command);
+
+    if (response) {
+        return {
+            status: response.$metadata.httpStatusCode,
+            message: "File deleted successfully"
+        };
+    }
+
+    throw new Error("File delete failed");
+}
+
+export { getS3ObjectService, deleteS3ObjectService };
+export default putS3ObjectService;

@@ -5,10 +5,13 @@ import FileUpload from "@/components/file-upload";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import uploadFile from "../services/uploadProcess";
+import { getS3ObjectService } from "@/services/s3BucketService";
+import ImagePreview from "./image-preview";
 
 function ProductMediaUpload() {
   // image upload state
   const [imageBuffer, setImageBuffer] = React.useState<string | null>(null);
+  const [imageUrl, setImageUrl] = React.useState<string | null>(null);
 
   const onDrop = React.useCallback((acceptedFiles: File[]) => {
     // foreach the accepted files
@@ -43,7 +46,15 @@ function ProductMediaUpload() {
     if (imageBuffer) {
       const upload = uploadFile(imageBuffer);
       upload.then((result) => {
-        console.log(result);
+        if (result?.status === 200) {
+          // if result is fine then pass it into folloing function
+          const url = getS3ObjectService(result.key);
+          url.then((res) => {
+            if (res) {
+              setImageUrl(res.url);
+            }
+          });
+        }
       });
     }
   };
@@ -58,7 +69,11 @@ function ProductMediaUpload() {
           Primary Image
         </label>
         <div className="bg-blue-100 rounded-lg p-6">
-          <FileUpload inputProps={getInputProps} rootProps={getRootProps} />
+          {imageUrl ? (
+            <ImagePreview url={imageUrl} />
+          ) : (
+            <FileUpload inputProps={getInputProps} rootProps={getRootProps} />
+          )}
         </div>
       </section>
       <div className="w-[150px] justify-center flex">

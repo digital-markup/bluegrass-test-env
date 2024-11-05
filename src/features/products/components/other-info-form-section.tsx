@@ -21,7 +21,7 @@ function OtherInformation() {
             type="text"
             id="title"
             placeholder="Title Information"
-            className="max-w-screen-sm py-6"
+            className="max-w-screen-sm"
           />
         </section>
         <section className="flex flex-col space-y-2.5 w-full">

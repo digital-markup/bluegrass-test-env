@@ -1,19 +1,22 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import React from "react";
+import SelectMultipleColors from "./select-colors-multiple";
 
 function GeneralInfoFormSection() {
   return (
     <div className="form-body">
       <div className="form-item-space">
         <section className="flex flex-col space-y-2 w-full">
-          <label
+          <Label
             htmlFor="displayInfo"
             className="text-sm text-slate-500 font-medium"
           >
             Display
-          </label>
-          <input
+          </Label>
+          <Input
             type="text"
             id="displayInfo"
             placeholder="Display Information"
@@ -21,29 +24,24 @@ function GeneralInfoFormSection() {
           />
         </section>
         <section className="flex flex-col space-y-2 w-full">
-          <label
+          <Label
             htmlFor="colors"
             className="text-sm text-slate-500 font-medium"
           >
             Colors
-          </label>
-          <input
-            type="text"
-            id="colors"
-            placeholder="Product SKU"
-            className="form-control min-w-full"
-          />
+          </Label>
+          <SelectMultipleColors />
         </section>
       </div>
       <div className="form-item-space">
         <section className="flex flex-col space-y-2 w-full">
-          <label
+          <Label
             htmlFor="storage"
             className="text-sm text-slate-500 font-medium"
           >
             Storage
-          </label>
-          <input
+          </Label>
+          <Input
             type="text"
             id="storage"
             placeholder="Storage Information"
@@ -51,13 +49,13 @@ function GeneralInfoFormSection() {
           />
         </section>
         <section className="flex flex-col space-y-2 w-full">
-          <label
+          <Label
             htmlFor="camera"
             className="text-sm text-slate-500 font-medium"
           >
             Camera
-          </label>
-          <input
+          </Label>
+          <Input
             type="text"
             id="camera"
             placeholder="Camera Information"
@@ -67,13 +65,13 @@ function GeneralInfoFormSection() {
       </div>
       <div className="form-item-space">
         <section className="flex flex-col space-y-2 w-full">
-          <label
+          <Label
             htmlFor="battery"
             className="text-sm text-slate-500 font-medium"
           >
             Battery
-          </label>
-          <input
+          </Label>
+          <Input
             type="text"
             id="battery"
             placeholder="Battery Capacity Information"
@@ -81,13 +79,13 @@ function GeneralInfoFormSection() {
           />
         </section>
         <section className="flex flex-col space-y-2 w-full">
-          <label
+          <Label
             htmlFor="ramInformation"
             className="text-sm text-slate-500 font-medium"
           >
             RAM
-          </label>
-          <input
+          </Label>
+          <Input
             type="text"
             id="ramInformation"
             placeholder="RAM Information"

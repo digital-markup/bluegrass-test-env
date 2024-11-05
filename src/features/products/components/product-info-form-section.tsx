@@ -2,51 +2,42 @@
 
 import React from "react";
 import ProductMediaUpload from "./product-media-uploader";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 function ProductInfoFormSection() {
   return (
     <div className="flex px-6 py-4 flex-col gap-y-3 mb-1 border-b">
       <div className="form-item-space">
         <section className="flex flex-col space-y-2 w-full">
-          <label htmlFor="title" className="text-sm text-slate-500 font-medium">
+          <Label htmlFor="title" className="text-sm text-slate-500 font-medium">
             Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            placeholder="Product Title"
-            className="form-control min-w-full"
-          />
+          </Label>
+          <Input type="text" id="title" placeholder="Product Title" />
         </section>
         <section className="flex flex-col space-y-2">
-          <label htmlFor="SKU" className="text-sm text-slate-500 font-medium">
+          <Label htmlFor="SKU" className="text-sm text-slate-500 font-medium">
             SKU
-          </label>
-          <input
-            type="text"
-            id="title"
-            placeholder="Product SKU"
-            className="form-control"
-          />
+          </Label>
+          <Input type="text" id="title" placeholder="Product SKU" />
         </section>
       </div>
-      <div className="form-item-space">
+      <div className="w-full h-full flex flex-col space-y-2 mb-4">
+        <Label htmlFor="title" className="text-sm text-slate-500 font-medium">
+          Product Images
+        </Label>
         <ProductMediaUpload />
       </div>
       <div className="form-item-space">
         <section className="flex flex-col space-y-2 w-full">
-          <label
+          <Label
             htmlFor="description"
             className="text-sm text-slate-500 font-medium"
           >
             Product Description
-          </label>
-          <textarea
-            id="description"
-            placeholder="Product Description"
-            className="form-control"
-            rows={7}
-          />
+          </Label>
+          <Textarea id="description" className="form-control" rows={7} />
         </section>
       </div>
     </div>

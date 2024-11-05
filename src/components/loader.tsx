@@ -5,9 +5,10 @@ import { RotatingLines } from "react-loader-spinner";
 
 interface LoaderProps {
   text: string;
+  color?: string;
 }
 
-function Loader({ text }: LoaderProps) {
+function Loader({ text, color }: LoaderProps) {
   return (
     <>
       <RotatingLines
@@ -15,7 +16,7 @@ function Loader({ text }: LoaderProps) {
         width="20"
         animationDuration="0.75"
         ariaLabel="rotating-lines-loading"
-        strokeColor="white"
+        strokeColor={color ? color : "#f8fafc"}
         strokeWidth="5"
       />
       {text}

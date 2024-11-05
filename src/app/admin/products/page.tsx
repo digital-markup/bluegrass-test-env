@@ -1,9 +1,12 @@
+import { Button } from "@/components/ui/button";
 import ApplicationSection from "@/features/products/components/application-form-section";
+import FloatingSubmitButton from "@/features/products/components/floating-submit-button";
 import GeneralInfoFormSection from "@/features/products/components/general-info-form-section";
 import OrganizationSection from "@/features/products/components/organization-form-section";
 import OtherInformation from "@/features/products/components/other-info-form-section";
 import ProductInfoFormSection from "@/features/products/components/product-info-form-section";
 import UploadProductVariations from "@/features/products/components/product-variations-info-form-section";
+import { PlusIcon } from "@radix-ui/react-icons";
 import React from "react";
 
 function ProductsPage() {
@@ -36,6 +39,10 @@ function ProductsPage() {
                 <h3 className="text-base font-medium">
                   Upload Product Variations
                 </h3>
+                <Button variant={"outline"} size={"sm"}>
+                  <PlusIcon className="w-4 h-4" />
+                  Add Variant
+                </Button>
               </header>
               <UploadProductVariations />
             </div>
@@ -59,6 +66,7 @@ function ProductsPage() {
             </div>
           </div>
         </div>
+        <FloatingSubmitButton submitButtonText="Save Product" />
       </form>
     </div>
   );

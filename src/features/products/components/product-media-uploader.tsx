@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React from "react";
@@ -6,12 +7,13 @@ import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import uploadFile from "../services/uploadProcess";
 import { getS3ObjectService } from "@/services/s3BucketService";
-import ImagePreview from "./image-preview";
-
+import Loader from "@/components/loader";
+import FileBuffer from "@/components/file-buffer";
 function ProductMediaUpload() {
   // image upload state
   const [imageBuffer, setImageBuffer] = React.useState<string | null>(null);
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const onDrop = React.useCallback((acceptedFiles: File[]) => {
     // foreach the accepted files
@@ -43,6 +45,7 @@ function ProductMediaUpload() {
   });
 
   const onUploadFileHandler = () => {
+    setIsLoading(true);
     if (imageBuffer) {
       const upload = uploadFile(imageBuffer);
       upload.then((result) => {
@@ -52,6 +55,7 @@ function ProductMediaUpload() {
           url.then((res) => {
             if (res) {
               setImageUrl(res.url);
+              setIsLoading(false);
             }
           });
         }
@@ -60,30 +64,24 @@ function ProductMediaUpload() {
   };
 
   return (
-    <div className="flex w-full gap-x-2 items-end justify-start">
-      <section className="flex flex-col space-y-2 flex-grow">
-        <label
-          htmlFor="mainImage"
-          className="text-sm text-slate-500 font-medium"
-        >
-          Primary Image
-        </label>
-        <div className="bg-blue-100 rounded-lg p-6">
-          {imageUrl ? (
-            <ImagePreview url={imageUrl} />
-          ) : (
-            <FileUpload inputProps={getInputProps} rootProps={getRootProps} />
-          )}
-        </div>
-      </section>
-      <div className="w-[150px] justify-center flex">
+    <div className="w-full border rounded-lg flex flex-col gap-y-3 py-6 px-4">
+      <div className="bg-white border border-slate-400/50 border-dashed rounded-lg p-6">
+        <FileUpload inputProps={getInputProps} rootProps={getRootProps} />
+      </div>
+      <div className="flex flex-col gap-y-3 my-4">
+        <FileBuffer />
+      </div>
+      <div className="flex items-center justify-between">
+        <p className="text-slate-500 text-sm">Add one or upto 4 images</p>
         <Button
+          className="w-[200px]"
           type="button"
+          size={"default"}
           variant={"secondary"}
-          disabled={!imageBuffer}
+          disabled={!imageBuffer || isLoading}
           onClick={onUploadFileHandler}
         >
-          Upload
+          {isLoading ? <Loader text="Uploading" color="#1e293b" /> : "Upload"}
         </Button>
       </div>
     </div>

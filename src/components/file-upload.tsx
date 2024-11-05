@@ -1,4 +1,5 @@
 "use client";
+import { ImageIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { DropzoneInputProps, DropzoneRootProps } from "react-dropzone";
 
@@ -9,9 +10,16 @@ interface FileUploadProps {
 
 function FileUpload({ inputProps, rootProps }: FileUploadProps) {
   return (
-    <div {...rootProps()} className="w-full h-[300px]">
-      <input {...inputProps()}/>
-      <p>Drop your files here, or click to select</p>
+    <div
+      {...rootProps()}
+      className="w-full h-[300px] flex flex-col gap-y-2 justify-center items-center cursor-pointer"
+    >
+      <ImageIcon className="w-10 h-10 text-slate-400" />
+      <input {...inputProps()} />
+      <p className="text-slate-600">
+        <span className="text-blue-600">Drop your files here</span>, or click to
+        select browse
+      </p>
     </div>
   );
 }

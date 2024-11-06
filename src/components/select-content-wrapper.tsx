@@ -1,5 +1,4 @@
-"use client";
-
+"use server";
 import React from "react";
 import {
   SelectContent,
@@ -7,21 +6,31 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { EntityType } from "@/features/products/utils/enum";
+import handleEntityOperation from "@/features/products/actions/entityOperation.action";
 
 interface SelectContentWrapperProps {
   placeholder: string;
+  id: EntityType;
 }
 
-function SelectContentWrapper({ placeholder }: SelectContentWrapperProps) {
+async function SelectContentWrapper({
+  placeholder,
+  id,
+}: SelectContentWrapperProps) {
+  const data = await handleEntityOperation(id);
+
   return (
     <>
       <SelectTrigger className="w-full">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-        <SelectItem value="system">System</SelectItem>
+        {data.map((item) => (
+          <SelectItem key={item.id} value={item.slug}>
+            {item.name}
+          </SelectItem>
+        ))}
       </SelectContent>
     </>
   );

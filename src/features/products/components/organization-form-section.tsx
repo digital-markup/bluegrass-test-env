@@ -1,11 +1,11 @@
-"use client";
-
+"use server";
 import SelectContentWrapper from "@/components/select-content-wrapper";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem } from "@/components/ui/select";
 import React from "react";
+import { EntityType } from "../utils/enum";
 
-function OrganizationSection() {
+async function OrganizationSection() {
   return (
     <div className="form-body">
       <div className="form-item-space flex-col">
@@ -15,7 +15,17 @@ function OrganizationSection() {
               Brand
             </Label>
             <Select>
-              <SelectContentWrapper placeholder="Select Brand" />
+              <SelectContent>
+                <SelectItem value="Apple">Apple</SelectItem>
+                <SelectItem value="Samsung">Samsung</SelectItem>
+                <SelectItem value="Xiaomi">Xiaomi</SelectItem>
+                <SelectItem value="Huawei">Huawei</SelectItem>
+                <SelectItem value="Nokia">Nokia</SelectItem>
+                <SelectItem value="Oppo">Oppo</SelectItem>
+                <SelectItem value="Vivo">Vivo</SelectItem>
+                <SelectItem value="Realme">Realme</SelectItem>
+                <SelectItem value="JBL">JBL</SelectItem>
+              </SelectContent>
             </Select>
           </div>
           <div className="flex flex-col gap-y-1">
@@ -23,17 +33,23 @@ function OrganizationSection() {
               Category
             </Label>
             <Select>
-              <SelectContentWrapper placeholder="Select Category" />
+              <SelectContentWrapper
+                placeholder="Select Category"
+                id={EntityType.CATEGORY}
+              />
             </Select>
           </div>
         </section>
         <section className="flex flex-col space-y-5 w-full">
           <div className="flex flex-col gap-y-1 mb-4">
             <Label htmlFor="category" className="text-sm text-slate-500">
-              Category
+              Tag
             </Label>
             <Select>
-              <SelectContentWrapper placeholder="Select Category" />
+              <SelectContentWrapper
+                placeholder="Select Tags"
+                id={EntityType.TAGS}
+              />
             </Select>
           </div>
         </section>

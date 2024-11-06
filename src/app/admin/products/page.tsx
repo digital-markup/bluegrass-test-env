@@ -61,8 +61,8 @@ function ProductsPage() {
                 </header>
                 <OrganizationSection />
               </div>
-              <div className="card-layout"></div>
-              <div className="card-layout"></div>
+              {/* <div className="card-layout"></div>
+              <div className="card-layout"></div> */}
             </div>
           </div>
         </div>

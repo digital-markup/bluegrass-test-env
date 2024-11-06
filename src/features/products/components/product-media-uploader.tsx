@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React from "react";
@@ -6,14 +5,18 @@ import FileUpload from "@/components/file-upload";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import uploadFile from "../services/uploadProcess";
-import { getS3ObjectService } from "@/services/s3BucketService";
 import Loader from "@/components/loader";
 import FileBuffer from "@/components/file-buffer";
+import { useImageStore } from "../zustand/useMediaStore";
+import { MetaType } from "../utils/types/products.types";
 function ProductMediaUpload() {
   // image upload state
-  const [imageBuffer, setImageBuffer] = React.useState<string | null>(null);
-  const [imageUrl, setImageUrl] = React.useState<string | null>(null);
+  const [imagesBuffer, setImagesBuffer] = React.useState<string[]>([]);
+  const [imageMeta, setImageMeta] = React.useState<MetaType[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
+
+  // init zustand store
+  const { setImgUrl } = useImageStore();
 
   const onDrop = React.useCallback((acceptedFiles: File[]) => {
     // foreach the accepted files
@@ -24,8 +27,12 @@ function ProductMediaUpload() {
       reader.onload = () => {
         const result = reader.result as string;
         // Remove the data URL prefix to get just the base64 data
-        const base64Data = result.split(",")[1];
-        setImageBuffer(base64Data);
+        const base64Data = result.replace(/^data:image\/\w+;base64,/, "");
+        setImagesBuffer((prev) => [...prev, base64Data]);
+        setImageMeta((prev) => [
+          ...prev,
+          { title: file.name, size: file.size },
+        ]);
       };
 
       // read the file as base64
@@ -35,8 +42,8 @@ function ProductMediaUpload() {
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    maxFiles: 1,
-    multiple: false,
+    maxFiles: 3,
+    multiple: true,
     accept: {
       "image/jpeg": [],
       "image/png": [],
@@ -46,18 +53,19 @@ function ProductMediaUpload() {
 
   const onUploadFileHandler = () => {
     setIsLoading(true);
-    if (imageBuffer) {
+    if (imagesBuffer.length > 0) {
+      const imageBuffer = imagesBuffer[0];
       const upload = uploadFile(imageBuffer);
       upload.then((result) => {
         if (result?.status === 200) {
-          // if result is fine then pass it into folloing function
-          const url = getS3ObjectService(result.key);
-          url.then((res) => {
-            if (res) {
-              setImageUrl(res.url);
-              setIsLoading(false);
-            }
-          });
+          // const url = getS3ObjectService(result.key);
+          // url.then((res) => {
+          //   if (res) {
+          //     setImageUrl(res.url);
+          //   }
+          // });
+          setImgUrl(result.key);
+          setIsLoading(false);
         }
       });
     }
@@ -69,7 +77,10 @@ function ProductMediaUpload() {
         <FileUpload inputProps={getInputProps} rootProps={getRootProps} />
       </div>
       <div className="flex flex-col gap-y-3 my-4">
-        <FileBuffer />
+        {imageMeta &&
+          imageMeta.map((meta, index) => (
+            <FileBuffer key={index} size={meta.size} title={meta.title} />
+          ))}
       </div>
       <div className="flex items-center justify-between">
         <p className="text-slate-500 text-sm">Add one or upto 4 images</p>
@@ -78,7 +89,7 @@ function ProductMediaUpload() {
           type="button"
           size={"default"}
           variant={"secondary"}
-          disabled={!imageBuffer || isLoading}
+          disabled={imagesBuffer.length === 0 || isLoading}
           onClick={onUploadFileHandler}
         >
           {isLoading ? <Loader text="Uploading" color="#1e293b" /> : "Upload"}

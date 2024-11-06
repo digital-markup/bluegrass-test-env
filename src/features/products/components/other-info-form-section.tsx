@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -9,7 +10,10 @@ import React from "react";
 function OtherInformation() {
   return (
     <div className="flex px-6 py-3 flex-col gap-y-3 mb-1">
-      <section className="border rounded-lg p-4 bg-blue-50 mb-5">
+      <section className="border rounded-lg p-4 mb-5">
+        <p className="text-blue-600 font-light text-base">
+          Other information of the product will be shown here
+        </p>
         <ScrollArea className="h-[400px] px-2"></ScrollArea>
       </section>
       <div className="form-item-space flex-col mb-1">
@@ -30,6 +34,11 @@ function OtherInformation() {
           </Label>
           <Textarea id="displayInfo" name="displayInfo" rows={7} />
         </section>
+        <div className="w-full flex justify-start">
+          <Button type="button" variant={"secondary"} className="w-[150px]">
+            Add
+          </Button>
+        </div>
       </div>
     </div>
   );

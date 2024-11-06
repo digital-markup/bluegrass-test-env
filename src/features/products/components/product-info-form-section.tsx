@@ -14,13 +14,13 @@ function ProductInfoFormSection() {
           <Label htmlFor="title" className="text-sm text-slate-500 font-medium">
             Title
           </Label>
-          <Input type="text" id="title" placeholder="Product Title" />
+          <Input type="text" id="title" name="title" placeholder="Product Title" />
         </section>
         <section className="flex flex-col space-y-2">
           <Label htmlFor="SKU" className="text-sm text-slate-500 font-medium">
             SKU
           </Label>
-          <Input type="text" id="title" placeholder="Product SKU" />
+          <Input type="text" id="title" name="SKU" placeholder="Product SKU" />
         </section>
       </div>
       <div className="w-full h-full flex flex-col space-y-2 mb-4">

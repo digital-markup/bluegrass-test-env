@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import uploadFile from "../services/uploadProcess";
 import Loader from "@/components/loader";
 import FileBuffer from "@/components/file-buffer";
-import { useImageStore } from "../zustand/useMediaStore";
 import { MetaType } from "../utils/types/products.types";
+import { useImageUpload } from "../zustand/useMediaStore";
 function ProductMediaUpload() {
   // image upload state
   const [imagesBuffer, setImagesBuffer] = React.useState<string[]>([]);
@@ -16,7 +16,7 @@ function ProductMediaUpload() {
   const [isLoading, setIsLoading] = React.useState(false);
 
   // init zustand store
-  const { setImgUrl } = useImageStore();
+  const { setImgUrl } = useImageUpload("main-image-store");
 
   const onDrop = React.useCallback((acceptedFiles: File[]) => {
     // foreach the accepted files
@@ -31,7 +31,7 @@ function ProductMediaUpload() {
         setImagesBuffer((prev) => [...prev, base64Data]);
         setImageMeta((prev) => [
           ...prev,
-          { title: file.name, size: file.size },
+          { title: file.name, size: file.size, url: file.name },
         ]);
       };
 

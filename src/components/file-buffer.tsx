@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./ui/button";
 import { Trash } from "lucide-react";
-import { useImageStore } from "@/features/products/zustand/useMediaStore";
+import { useImageUpload } from "@/features/products/zustand/useMediaStore";
 import { CheckCircledIcon } from "@radix-ui/react-icons";
 
 interface FileBufferProps {
@@ -13,7 +13,7 @@ interface FileBufferProps {
 }
 
 function FileBuffer({ size, title }: FileBufferProps) {
-  const { imgUrl } = useImageStore();
+  const { imgUrl } = useImageUpload("main-image-store");
   // size in bytes
   const sizeInBytes = (size / 1000).toFixed(2);
   return (

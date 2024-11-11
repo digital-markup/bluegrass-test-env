@@ -2,12 +2,15 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-const stores: Record<string, any> = {};
+interface ImageItem {
+  id: string;
+  imgUrl: string;
+}
 
-export interface ImageStoreProps {
-  imgUrl: string | string[];
-  setImgUrl: (url: string) => void;
-  deleteImgUrl: () => void;
+interface ImageStoreProps {
+  images: ImageItem[];
+  addImage: (imgUrl: string) => void;
+  deleteImage: (id: string) => void;
   clearStore: () => void;
 }
 
@@ -17,27 +20,6 @@ interface ImageVariantProps {
   deleteProperty: (id: string) => void;
   clearStore: () => void;
 }
-
-export const useImageUpload = (key: string) => {
-  if (!stores[key]) {
-    stores[key] = create<ImageStoreProps>()(
-      persist(
-        (set) => ({
-          imgUrl: "",
-          setImgUrl: (url: string) => set({ imgUrl: url }),
-          deleteImgUrl: () => set({ imgUrl: "" }),
-          clearStore: () => set({ imgUrl: "" }),
-        }),
-        {
-          name: key,
-          storage: createJSONStorage(() => sessionStorage),
-        }
-      )
-    );
-  }
-
-  return stores[key];
-};
 
 export const useImageVariantsStore = create<ImageVariantProps>()(
   persist(
@@ -62,6 +44,27 @@ export const useImageVariantsStore = create<ImageVariantProps>()(
     }),
     {
       name: "img-variant-store",
+      storage: createJSONStorage(() => sessionStorage),
+    }
+  )
+);
+
+export const useImagesUploadStore = create<ImageStoreProps>()(
+  persist(
+    (set) => ({
+      images: [],
+      addImage: (imgUrl) => {
+        const newImage: ImageItem = { id: crypto.randomUUID(), imgUrl };
+        set((state) => ({ images: [...state.images, newImage] }));
+      },
+      deleteImage: (id) =>
+        set((state) => ({
+          images: state.images.filter((img) => img.id !== id),
+        })),
+      clearStore: () => set({ images: [] }),
+    }),
+    {
+      name: "main-image-store",
       storage: createJSONStorage(() => sessionStorage),
     }
   )

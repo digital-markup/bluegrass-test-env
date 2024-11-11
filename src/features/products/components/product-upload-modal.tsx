@@ -25,6 +25,9 @@ import { useForm } from "react-hook-form";
 import productSchema from "../validation/product-validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { MultipleProductUploader } from "./product-media-uploader";
+import { Upload } from "lucide-react";
+import { v4 as uuidv4 } from "uuid";
 
 function ProductUploadModal() {
   const [imagesBuffer, setImagesBuffer] = React.useState<string[]>([]);
@@ -59,6 +62,7 @@ function ProductUploadModal() {
         setImagesBuffer((prev) => [...prev, base64Data]);
 
         const preview = {
+          id: uuidv4(),
           title: file.name,
           size: file.size,
           url: URL.createObjectURL(file),
@@ -193,4 +197,27 @@ function ProductUploadModal() {
   );
 }
 
+const MultipleProductUploaderModal = () => {
+  return (
+    <div>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant={"default"}>
+            <Upload className="mr-2 h-4 w-4" /> Upload
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Upload Multiple Products</DialogTitle>
+            <MultipleProductUploader />
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+};
+
+MultipleProductUploaderModal.displayName = "MultipleProductModal";
+
+export { MultipleProductUploaderModal };
 export default ProductUploadModal;

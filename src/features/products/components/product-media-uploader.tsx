@@ -8,15 +8,16 @@ import uploadFile from "../services/uploadProcess";
 import Loader from "@/components/loader";
 import FileBuffer from "@/components/file-buffer";
 import { MetaType } from "../utils/types/products.types";
-import { useImageUpload } from "../zustand/useMediaStore";
-function ProductMediaUpload() {
-  // image upload state
-  const [imagesBuffer, setImagesBuffer] = React.useState<string[]>([]);
+import { useImagesUploadStore } from "../zustand/useMediaStore";
+import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
+
+function MultipleProductUploader() {
   const [imageMeta, setImageMeta] = React.useState<MetaType[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
   // init zustand store
-  const { setImgUrl } = useImageUpload("main-image-store");
+  const { addImage } = useImagesUploadStore();
 
   const onDrop = React.useCallback((acceptedFiles: File[]) => {
     // foreach the accepted files
@@ -28,10 +29,15 @@ function ProductMediaUpload() {
         const result = reader.result as string;
         // Remove the data URL prefix to get just the base64 data
         const base64Data = result.replace(/^data:image\/\w+;base64,/, "");
-        setImagesBuffer((prev) => [...prev, base64Data]);
         setImageMeta((prev) => [
           ...prev,
-          { title: file.name, size: file.size, url: file.name },
+          {
+            id: uuidv4(),
+            title: file.name,
+            size: file.size,
+            url: URL.createObjectURL(file),
+            base64: base64Data,
+          },
         ]);
       };
 
@@ -42,33 +48,45 @@ function ProductMediaUpload() {
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    maxFiles: 3,
+    maxFiles: 5,
     multiple: true,
     accept: {
       "image/jpeg": [],
       "image/png": [],
       "video/mp4": [],
     },
+    maxSize: 50000000,
   });
 
-  const onUploadFileHandler = () => {
-    setIsLoading(true);
-    if (imagesBuffer.length > 0) {
-      const imageBuffer = imagesBuffer[0];
-      const upload = uploadFile(imageBuffer);
-      upload.then((result) => {
-        if (result?.status === 200) {
-          // const url = getS3ObjectService(result.key);
-          // url.then((res) => {
-          //   if (res) {
-          //     setImageUrl(res.url);
-          //   }
-          // });
-          setImgUrl(result.key);
-          setIsLoading(false);
-        }
+  // Upload to S3
+  const onUploadFilesHandler = () => {
+    if (imageMeta.length > 0) {
+      setIsLoading(true);
+
+      imageMeta.forEach(({ base64, title }) => {
+        const upload = uploadFile(base64 as string);
+        upload
+          .then((result) => {
+            if (result?.status === 200) {
+              addImage(result.key);
+              toast(`${title} uploaded successfully`);
+            }
+          })
+          .then(() => {
+            setIsLoading(false);
+          })
+          .finally(() => {
+            setImageMeta([]);
+          });
       });
     }
+  };
+
+  // Delete from S3
+
+  // Delete from metaArray
+  const onDeleteMeta = (id: string) => {
+    setImageMeta((prev) => prev.filter((meta) => meta.id !== id));
   };
 
   return (
@@ -77,20 +95,19 @@ function ProductMediaUpload() {
         <FileUpload inputProps={getInputProps} rootProps={getRootProps} />
       </div>
       <div className="flex flex-col gap-y-3 my-4">
-        {imageMeta &&
-          imageMeta.map((meta, index) => (
-            <FileBuffer key={index} size={meta.size} title={meta.title} />
-          ))}
+        {imageMeta.length > 0 && (
+          <FileBuffer fileMeta={imageMeta} onRemove={onDeleteMeta} />
+        )}
       </div>
       <div className="flex items-center justify-between">
-        <p className="text-slate-500 text-sm">Add one or upto 4 images</p>
+        <p className="text-slate-500 text-sm">Add one or upto 5 images</p>
         <Button
           className="w-[200px]"
           type="button"
           size={"default"}
           variant={"secondary"}
-          disabled={imagesBuffer.length === 0 || isLoading}
-          onClick={onUploadFileHandler}
+          disabled={imageMeta.length === 0 || isLoading}
+          onClick={onUploadFilesHandler}
         >
           {isLoading ? <Loader text="Uploading" color="#1e293b" /> : "Upload"}
         </Button>
@@ -99,4 +116,4 @@ function ProductMediaUpload() {
   );
 }
 
-export default ProductMediaUpload;
+export { MultipleProductUploader };

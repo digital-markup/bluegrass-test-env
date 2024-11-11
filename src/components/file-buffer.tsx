@@ -3,38 +3,52 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "./ui/button";
-import { Trash } from "lucide-react";
-import { useImageUpload } from "@/features/products/zustand/useMediaStore";
-import { CheckCircledIcon } from "@radix-ui/react-icons";
+import { X } from "lucide-react";
+import { MetaType } from "@/features/products/utils/types/products.types";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 interface FileBufferProps {
-  title: string;
-  size: number;
+  fileMeta: MetaType[];
+  onRemove: (id: string) => void;
 }
 
-function FileBuffer({ size, title }: FileBufferProps) {
-  const { imgUrl } = useImageUpload("main-image-store");
-  // size in bytes
-  const sizeInBytes = (size / 1000).toFixed(2);
+function FileBuffer({ fileMeta, onRemove }: FileBufferProps) {
   return (
-    <div className="px-4 py-2 w-full rounded-lg border border-blue-200 flex items-center justify-between bg-blue-50">
-      <section className="flex gap-x-3 items-center">
-        <Image src="/img/icon.png" alt="File" width={45} height={45} />
-        <div>
-          <p className="text-sm font-medium">{title}</p>
-          <p className="text-xs text-slate-600">{sizeInBytes} KB</p>
-        </div>
-      </section>
-      <span>
-        {imgUrl ? (
-          <CheckCircledIcon className="w-6 h-6 text-green-500" />
-        ) : (
-          <Button type="button" size={"icon"} variant={"ghost"}>
-            <Trash size={20} color="#ef4444" />
-          </Button>
-        )}
-      </span>
-    </div>
+    <ScrollArea className="w-full h-[320px]">
+      <div className="flex flex-col space-y-6 p-4">
+        {fileMeta.map((file) => (
+          <figure
+            className="w-full h-[310px] rounded-lg border border-slate-200 flex flex-col items-center justify-start gap-y-1 bg-slate-100 relative"
+            key={file.id}
+          >
+            <Image
+              src={file.url}
+              alt={file.title}
+              height={300}
+              width={300}
+              className="object-cover h-full w-full rounded-md"
+              placeholder="blur"
+              blurDataURL={file.url}
+              decoding="async"
+            />
+            <figcaption className="absolute bottom-2 z-10 text-xs bg-black/60 py-1 px-3 rounded-sm backdrop-blur-sm text-white">
+              {file.title}
+            </figcaption>
+            <span className="absolute top-2 right-2">
+              <Button
+                type="button"
+                size={"icon"}
+                variant={"secondary"}
+                onClick={() => onRemove(file.id)}
+              >
+                <X size={20} color="#0f172a" />
+              </Button>
+            </span>
+          </figure>
+        ))}
+      </div>
+      <ScrollBar orientation="horizontal" />
+    </ScrollArea>
   );
 }
 

@@ -8,4 +8,13 @@ const productSchema = z.object({
         }),
 });
 
+// const otherInfoSchema = z.object({
+//     infoTitle: z.string().min(1, {
+//         message: "Please enter info title",
+//     }),
+//     infoDescription: z.string().min(1, {
+//         message: "Please enter info description",
+//     }),
+// });
+
 export default productSchema;

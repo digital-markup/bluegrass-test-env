@@ -12,7 +12,7 @@ function FileUpload({ inputProps, rootProps }: FileUploadProps) {
   return (
     <div
       {...rootProps()}
-      className="w-full h-[300px] flex flex-col gap-y-2 justify-center items-center cursor-pointer"
+      className="w-full h-[150px] flex flex-col gap-y-2 justify-center items-center cursor-pointer"
     >
       <ImageIcon className="w-10 h-10 text-slate-400" />
       <input {...inputProps()} />

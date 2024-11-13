@@ -2,41 +2,29 @@
 
 import React from "react";
 import { MultiSelect } from "@/components/ui/multi-select";
+import { useColorStore } from "../zustand/useMultiInfoStore";
 
-const frameworksList = [
-  { value: "red", label: "Red" },
-  { value: "yellow", label: "Yellow" },
-  { value: "green", label: "Green" },
-  { value: "blue", label: "Blue" },
-  { value: "indigo", label: "Indigo" },
-  { value: "purple", label: "Purple" },
-  { value: "pink", label: "Pink" },
+const colors = [
+  { name: "red", slug: "Red" },
+  { name: "green", slug: "Green" },
+  { name: "blue", slug: "Blue" },
+  { name: "yellow", slug: "Yellow" },
+  { name: "black", slug: "Black" },
+  { name: "white", slug: "White" },
 ];
 
 function SelectMultipleColors() {
-  const [selectedFrameworks, setSelectedFrameworks] = React.useState<string[]>([
-    "red",
-    "yellow",
-  ]);
+  const { selectedColors, setSelectedColors } = useColorStore();
   return (
     <div className="max-w-xl">
       <MultiSelect
-        options={frameworksList}
-        onValueChange={setSelectedFrameworks}
-        defaultValue={selectedFrameworks}
+        options={colors}
+        onValueChange={setSelectedColors}
+        defaultValue={selectedColors}
         placeholder="Select Colors"
         variant="secondary"
         maxCount={3}
-        name="colors"
       />
-      {/* <div className="mt-4">
-        <h2 className="text-xl font-semibold">Selected Frameworks:</h2>
-        <ul className="list-disc list-inside">
-          {selectedFrameworks.map((framework) => (
-            <li key={framework}>{framework}</li>
-          ))}
-        </ul>
-      </div> */}
     </div>
   );
 }

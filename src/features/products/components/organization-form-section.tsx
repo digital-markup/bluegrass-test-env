@@ -20,8 +20,8 @@ function OrganizationSection() {
             <Label htmlFor="brand" className="text-sm text-slate-500">
               Brand
             </Label>
-            <Select>
-              <SelectTrigger className="w-full" name="brand">
+            <Select name="brand">
+              <SelectTrigger className="w-full">
                 <SelectValue placeholder={"Select Brand"} />
               </SelectTrigger>
               <SelectContent>
@@ -41,7 +41,7 @@ function OrganizationSection() {
             <Label htmlFor="category" className="text-sm text-slate-500">
               Category
             </Label>
-            <Select>
+            <Select name="category">
               <SelectContentWrapper
                 placeholder="Select Category"
                 id={EntityType.CATEGORY}
@@ -55,7 +55,7 @@ function OrganizationSection() {
               Tag
             </Label>
             <Select>
-              <SelectContentWrapper
+              <SelectContentWrapper.Child
                 placeholder="Select Tags"
                 id={EntityType.TAGS}
               />

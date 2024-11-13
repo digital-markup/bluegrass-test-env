@@ -26,7 +26,7 @@ function ProductInfoFormSection() {
           <Label htmlFor="SKU" className="text-sm text-slate-500 font-medium">
             SKU
           </Label>
-          <Input type="text" id="title" name="SKU" placeholder="Product SKU" />
+          <Input type="text" id="title" name="sku" placeholder="Product SKU" />
         </section>
       </div>
       <div className="w-full h-full flex flex-col space-y-2 mb-4">

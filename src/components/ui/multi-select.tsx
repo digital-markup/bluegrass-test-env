@@ -66,9 +66,9 @@ interface MultiSelectProps
    */
   options: {
     /** The text to display for the option. */
-    label: string;
+    name: string;
     /** The unique value associated with the option. */
-    value: string;
+    slug: string;
     /** Optional icon component to display alongside the option. */
     icon?: React.ComponentType<{ className?: string }>;
   }[];
@@ -185,7 +185,7 @@ export const MultiSelect = React.forwardRef<
       if (selectedValues.length === options.length) {
         handleClear();
       } else {
-        const allValues = options.map((option) => option.value);
+        const allValues = options.map((option) => option.slug);
         setSelectedValues(allValues);
         onValueChange(allValues);
       }
@@ -211,7 +211,7 @@ export const MultiSelect = React.forwardRef<
               <div className="flex justify-between items-center w-full">
                 <div className="flex flex-wrap items-center">
                   {selectedValues.slice(0, maxCount).map((value) => {
-                    const option = options.find((o) => o.value === value);
+                    const option = options.find((o) => o.slug === value);
                     const IconComponent = option?.icon;
                     return (
                       <Badge
@@ -225,7 +225,7 @@ export const MultiSelect = React.forwardRef<
                         {IconComponent && (
                           <IconComponent className="h-4 w-4 mr-2" />
                         )}
-                        {option?.label}
+                        {option?.name}
                         <XCircle
                           className="ml-2 h-4 w-4 cursor-pointer"
                           onClick={(event) => {
@@ -312,11 +312,11 @@ export const MultiSelect = React.forwardRef<
                   <span>(Select All)</span>
                 </CommandItem>
                 {options.map((option) => {
-                  const isSelected = selectedValues.includes(option.value);
+                  const isSelected = selectedValues.includes(option.slug);
                   return (
                     <CommandItem
-                      key={option.value}
-                      onSelect={() => toggleOption(option.value)}
+                      key={option.slug}
+                      onSelect={() => toggleOption(option.slug)}
                       className="cursor-pointer"
                     >
                       <div
@@ -332,7 +332,7 @@ export const MultiSelect = React.forwardRef<
                       {option.icon && (
                         <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                       )}
-                      <span>{option.label}</span>
+                      <span>{option.name}</span>
                     </CommandItem>
                   );
                 })}

@@ -11,3 +11,13 @@ export interface ImageVariantProps {
     deleteProperty: (id: string) => void;
     clearStore: () => void;
 }
+
+export interface ColorStore {
+    selectedColors: string[];
+    setSelectedColors: (colors: string[]) => void;
+}
+
+export interface TagsStore {
+    selectedTags: string[];
+    setSelectedTags: (tags: string[]) => void;
+}

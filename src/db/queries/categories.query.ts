@@ -4,7 +4,6 @@ import { categoriesTable } from "../schema";
 
 // get categories from the table
 export const getCategories = async (isArchived: boolean): Promise<Array<{
-    id: string,
     name: string,
     slug: string
 }>> => {

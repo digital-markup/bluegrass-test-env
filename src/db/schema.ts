@@ -1,7 +1,7 @@
 // categories table
 // fields -> id, name, slug, isArchived, createdAt, updatedAt
 
-import { boolean, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import { boolean, integer, jsonb, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const categoriesTable = pgTable("categories", {
     id: uuid("id").notNull().defaultRandom().primaryKey(),
@@ -50,3 +50,36 @@ export const usersTable = pgTable("users", {
 
 export type InsertUser = typeof usersTable.$inferInsert;
 export type SelectUser = typeof usersTable.$inferSelect;
+
+
+// products table
+// fields -> id, title, sku?, productDescription, displayInfo, storage, camera, battery, ramInformation, availability, stock, compareAtPrice, images ->json {id, imgUrl}, services -> json {id, title, description}, variants -> json {id, imgUrl, variant}, createdAt, updatedAt
+
+export const productsTable = pgTable("products", {
+    id: uuid("id").notNull().defaultRandom().primaryKey(),
+    title: text("title").notNull(),
+    sku: text("sku"),
+    productDescription: text("productDescription").notNull(),
+    category: text("category").notNull(),
+    tags: text("tags").array().notNull(),
+    brand: text("brand").notNull(),
+    displayInfo: text("displayInfo").notNull(),
+    storage: text("storage").notNull(),
+    camera: text("camera").notNull(),
+    battery: text("battery").notNull(),
+    colors: text("colors").array(),
+    ramInformation: text("ramInformation").notNull(),
+    availability: text("availability").notNull(),
+    stock: integer("stock").notNull(),
+    compareAtPrice: boolean("compareAtPrice").default(false),
+    images: jsonb("images").notNull(),
+    services: jsonb("services").notNull(),
+    variants: jsonb("variants").notNull(),
+    isPublished: boolean("isPublished").notNull().default(true),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at')
+        .$onUpdate(() => new Date()),
+});
+
+export type InsertProduct = typeof productsTable.$inferInsert;
+export type SelectProduct = typeof productsTable.$inferSelect;

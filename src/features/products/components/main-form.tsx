@@ -13,21 +13,30 @@ import {
   useImagesUploadStore,
   useImageVariantsStore,
 } from "../zustand/useMediaStore";
+import { useColorStore, useTagsStore } from "../zustand/useMultiInfoStore";
+import { InsertProduct } from "@/db/schema";
+import axios from "axios";
 
 function MainForm() {
   const { info } = useInfoStore();
   const { images } = useImagesUploadStore();
   const { props } = useImageVariantsStore();
+  const { selectedColors } = useColorStore();
+  const { selectedTags } = useTagsStore();
 
   const onSubmitHandler = (values: FormData) => {
     const data = Object.fromEntries(values);
     const updateData = {
       ...data,
+      colors: selectedColors,
       images,
       services: info,
       variants: props,
-    };
-    console.log(updateData);
+      tags: selectedTags,
+    } as InsertProduct;
+    
+    const response = axios.post("/api/products/create", updateData);
+    response.then((res) => console.log(res.data));
   };
 
   return (
@@ -74,8 +83,6 @@ function MainForm() {
                 </header>
                 <OrganizationSection />
               </div>
-              {/* <div className="card-layout"></div>
-              <div className="card-layout"></div> */}
             </div>
           </div>
         </div>

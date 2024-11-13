@@ -1,4 +1,4 @@
-
+"use server";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { getCategories } from "@/db/queries/categories.query";
 import { EntityType } from "../utils/enum";

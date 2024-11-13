@@ -22,7 +22,7 @@ import ImagePreview from "./image-preview";
 import formatFileSize from "../services/mediaSizeFormat";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
-import productSchema from "../validation/product-validation";
+import productSchema, { variantSchema } from "../validation/product-validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { MultipleProductUploader } from "./product-media-uploader";
@@ -44,8 +44,8 @@ function ProductUploadModal() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<z.infer<typeof productSchema>>({
-    resolver: zodResolver(productSchema),
+  } = useForm<z.infer<typeof variantSchema>>({
+    resolver: zodResolver(variantSchema),
   });
 
   // dropzone parent
@@ -83,6 +83,7 @@ function ProductUploadModal() {
     multiple: false,
     accept: {
       "image/jpeg": [],
+      "image/webp": [],
       "image/png": [],
       "video/mp4": [],
     },

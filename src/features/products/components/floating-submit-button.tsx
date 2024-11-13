@@ -6,7 +6,7 @@ import React from "react";
 
 interface Props {
   submitButtonText: string;
-  onSubmit?: () => void;
+  onSubmit?: (values: FormData) => void;
 }
 
 function FloatingSubmitButton({ submitButtonText, onSubmit }: Props) {
@@ -22,7 +22,12 @@ function FloatingSubmitButton({ submitButtonText, onSubmit }: Props) {
           <Button type="reset" variant={"link"} className="text-red-400 p-0">
             Cancel
           </Button>
-          <Button type="submit" variant={"link"} className="text-white p-0">
+          <Button
+            type="submit"
+            variant={"link"}
+            className="text-white p-0"
+            formAction={onSubmit}
+          >
             {submitButtonText}
           </Button>
         </span>

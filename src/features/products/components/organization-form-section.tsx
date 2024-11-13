@@ -1,11 +1,17 @@
-"use server";
+"use client";
 import SelectContentWrapper from "@/components/select-content-wrapper";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import React from "react";
 import { EntityType } from "../utils/enum";
 
-async function OrganizationSection() {
+function OrganizationSection() {
   return (
     <div className="form-body">
       <div className="form-item-space flex-col">
@@ -15,6 +21,9 @@ async function OrganizationSection() {
               Brand
             </Label>
             <Select>
+              <SelectTrigger className="w-full" name="brand">
+                <SelectValue placeholder={"Select Brand"} />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="Apple">Apple</SelectItem>
                 <SelectItem value="Samsung">Samsung</SelectItem>

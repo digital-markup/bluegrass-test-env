@@ -28,7 +28,7 @@ function ApplicationSection() {
             <Label htmlFor="stock" className="text-sm text-slate-500">
               Stock
             </Label>
-            <Input type="number" id="stock" placeholder="0" />
+            <Input type="number" name="stock" id="stock" placeholder="0" />
           </div>
           <div className="flex flex-row w-full justify-between items-start">
             <span className="flex flex-col gap-y-1">
@@ -42,7 +42,7 @@ function ApplicationSection() {
                 This product visible for comparison with others
               </small>
             </span>
-            <Switch />
+            <Switch name="compareAtPrice" />
           </div>
         </section>
       </div>

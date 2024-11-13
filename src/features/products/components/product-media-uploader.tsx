@@ -52,6 +52,7 @@ function MultipleProductUploader() {
     multiple: true,
     accept: {
       "image/jpeg": [],
+      "image/webp": [],
       "image/png": [],
       "video/mp4": [],
     },

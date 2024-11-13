@@ -8,13 +8,14 @@ const productSchema = z.object({
         }),
 });
 
-// const otherInfoSchema = z.object({
-//     infoTitle: z.string().min(1, {
-//         message: "Please enter info title",
-//     }),
-//     infoDescription: z.string().min(1, {
-//         message: "Please enter info description",
-//     }),
-// });
+const variantSchema = z.object({
+    variantTitle: z
+        .string()
+        .min(1, {
+            message: "Please enter variant title",
+        }),
+});
+
+export { variantSchema }
 
 export default productSchema;

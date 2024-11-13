@@ -19,6 +19,7 @@ function GeneralInfoFormSection() {
           <Input
             type="text"
             id="displayInfo"
+            name="displayInfo"
             placeholder="Display Information"
             className="form-control min-w-full"
           />
@@ -44,6 +45,7 @@ function GeneralInfoFormSection() {
           <Input
             type="text"
             id="storage"
+            name="storage"
             placeholder="Storage Information"
             className="form-control min-w-full"
           />
@@ -58,6 +60,7 @@ function GeneralInfoFormSection() {
           <Input
             type="text"
             id="camera"
+            name="camera"
             placeholder="Camera Information"
             className="form-control min-w-full"
           />
@@ -74,6 +77,7 @@ function GeneralInfoFormSection() {
           <Input
             type="text"
             id="battery"
+            name="battery"
             placeholder="Battery Capacity Information"
             className="form-control min-w-full"
           />
@@ -88,6 +92,7 @@ function GeneralInfoFormSection() {
           <Input
             type="text"
             id="ramInformation"
+            name="ramInformation"
             placeholder="RAM Information"
             className="form-control min-w-full"
           />

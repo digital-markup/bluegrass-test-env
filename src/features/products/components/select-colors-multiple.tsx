@@ -27,6 +27,7 @@ function SelectMultipleColors() {
         placeholder="Select Colors"
         variant="secondary"
         maxCount={3}
+        name="colors"
       />
       {/* <div className="mt-4">
         <h2 className="text-xl font-semibold">Selected Frameworks:</h2>

@@ -1,4 +1,5 @@
-"use server";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 import React from "react";
 import {
   SelectContent,
@@ -14,19 +15,23 @@ interface SelectContentWrapperProps {
   id: EntityType;
 }
 
-async function SelectContentWrapper({
-  placeholder,
-  id,
-}: SelectContentWrapperProps) {
-  const data = await handleEntityOperation(id);
+function SelectContentWrapper({ placeholder, id }: SelectContentWrapperProps) {
+  const [data, setData] = React.useState<
+    Array<{ id: string; name: string; slug: string }>
+  >([]);
+
+  React.useEffect(() => {
+    const values = handleEntityOperation(id);
+    values.then((data) => setData(data));
+  }, [setData, id]);
 
   return (
     <>
-      <SelectTrigger className="w-full">
+      <SelectTrigger className="w-full" name={String(id).toLowerCase()}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
-        {data.map((item) => (
+        {data.map((item: (typeof data)[0]) => (
           <SelectItem key={item.id} value={item.slug}>
             {item.name}
           </SelectItem>

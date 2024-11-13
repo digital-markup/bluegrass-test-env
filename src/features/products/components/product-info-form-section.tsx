@@ -63,7 +63,12 @@ function ProductInfoFormSection() {
           >
             Product Description
           </Label>
-          <Textarea id="description" className="form-control" rows={7} />
+          <Textarea
+            id="description"
+            name="productDescription"
+            className="form-control"
+            rows={7}
+          />
         </section>
       </div>
     </div>

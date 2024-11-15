@@ -1,4 +1,9 @@
-import { Button } from "@/components/ui/button";
+import ContactUs from "@/features/products/components/contact-us";
+import MainProductContainer from "@/features/products/components/main-product-container";
+import MainProductDetails from "@/features/products/components/main-product-details";
+import MainProductHeader from "@/features/products/components/main-product-header";
+import ProductInfoTabs from "@/features/products/components/product-info-tabs";
+import ServicesContainer from "@/features/products/components/service-container";
 import React from "react";
 
 function SingleProductPage() {
@@ -10,91 +15,21 @@ function SingleProductPage() {
           <div className="lg:sticky top-8 lg:h-screen overflow-auto">
             <div className="flex flex-col gap-y-4">
               {/* main product layout */}
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-                itaque tenetur porro, alias consequatur atque illo voluptatum,
-                odit minus molestiae, quidem aliquid! Voluptatibus aut totam
-                maxime vero commodi, quod ratione?
-              </p>
+              <MainProductContainer />
             </div>
           </div>
-          <div className="flex flex-col gap-y-4 lg:py-36">
+          <div className="flex flex-col gap-y-6 lg:py-12">
             {/* side product information */}
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Molestiae tenetur minima, ipsum tempora aut, eveniet quos vitae, a
-              commodi dolorem quam corporis voluptatibus doloribus impedit
-              facere. Repudiandae quidem pariatur minima?
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus
-              ullam modi iure ipsa soluta nobis est aut officiis, consectetur
-              suscipit eum nostrum quod doloribus autem placeat animi quae
-              tempore laudantium.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Molestiae tenetur minima, ipsum tempora aut, eveniet quos vitae, a
-              commodi dolorem quam corporis voluptatibus doloribus impedit
-              facere. Repudiandae quidem pariatur minima?
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus
-              ullam modi iure ipsa soluta nobis est aut officiis, consectetur
-              suscipit eum nostrum quod doloribus autem placeat animi quae
-              tempore laudantium.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Molestiae tenetur minima, ipsum tempora aut, eveniet quos vitae, a
-              commodi dolorem quam corporis voluptatibus doloribus impedit
-              facere. Repudiandae quidem pariatur minima?
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus
-              ullam modi iure ipsa soluta nobis est aut officiis, consectetur
-              suscipit eum nostrum quod doloribus autem placeat animi quae
-              tempore laudantium.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Molestiae tenetur minima, ipsum tempora aut, eveniet quos vitae, a
-              commodi dolorem quam corporis voluptatibus doloribus impedit
-              facere. Repudiandae quidem pariatur minima?
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus
-              ullam modi iure ipsa soluta nobis est aut officiis, consectetur
-              suscipit eum nostrum quod doloribus autem placeat animi quae
-              tempore laudantium.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Molestiae tenetur minima, ipsum tempora aut, eveniet quos vitae, a
-              commodi dolorem quam corporis voluptatibus doloribus impedit
-              facere. Repudiandae quidem pariatur minima?
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus
-              ullam modi iure ipsa soluta nobis est aut officiis, consectetur
-              suscipit eum nostrum quod doloribus autem placeat animi quae
-              tempore laudantium.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Molestiae tenetur minima, ipsum tempora aut, eveniet quos vitae, a
-              commodi dolorem quam corporis voluptatibus doloribus impedit
-              facere. Repudiandae quidem pariatur minima?
-            </p>
+            <MainProductHeader />
+            <MainProductDetails />
+            <ServicesContainer />
+            <ContactUs />
           </div>
         </div>
-        <div className="flex flex-col w-full h-full">
+        <div className="flex flex-col w-full h-full pl-12">
           {/* Tabs with additional information */}
           <div className="flex flex-row w-full justify-evenly items-center mt-20">
-            <Button>Additional Information</Button>
-            <Button>Review</Button>
-            <Button>Compare</Button>
-            <Button>Related Products</Button>
+            <ProductInfoTabs />
           </div>
         </div>
       </div>

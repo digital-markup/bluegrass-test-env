@@ -11,19 +11,19 @@ function SingleProductPage() {
     <div className="w-full min-h-screen px-6">
       {/* Breadcrumb nav*/}
       <div className="container mx-auto">
-        <div className="w-full grid lg:grid-cols-[1fr_430px] gap-x-5 gap-4 mt-12">
+        <div className="w-full grid lg:grid-cols-[1fr_430px] gap-x-5 gap-4 my-12">
           <div className="lg:sticky top-8 lg:h-screen overflow-auto">
             <div className="flex flex-col gap-y-4">
               {/* main product layout */}
               <MainProductContainer />
+              <ServicesContainer />
+              <ContactUs />
             </div>
           </div>
           <div className="flex flex-col gap-y-6 lg:py-12">
             {/* side product information */}
             <MainProductHeader />
             <MainProductDetails />
-            <ServicesContainer />
-            <ContactUs />
           </div>
         </div>
         <div className="flex flex-col w-full h-full pl-12">

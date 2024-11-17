@@ -1,22 +1,28 @@
 "use client";
 
 import React from "react";
+import { Package, ShieldCheck, Truck } from "lucide-react";
 
 function ServicesContainer() {
   return (
-    <div className="border-y border-slate-400 mt-10">
-      <section className="py-8 w-full flex flex-col gap-y-4">
-        <div>
-          <h2 className="font-semibold text-lg">Our services</h2>
-          <p className="text-sm text-slate-500">Customer always comes first for us.</p>
-        </div>
-        <div className="flex gap-x-3 justify-start items-center">
-          <p>Free Shipping</p>
-          <p>Pickup from the Store</p>
-          <p>1 Year Warranty</p>
-        </div>
-      </section>
-    </div>
+    <section className="flex justify-center gap-12 items-center border-b border-slate-400/50 mx-12 py-6">
+      {/* Services section */}
+      <span className="flex flex-col gap-y-1">
+        <Truck className="w-6 h-6 text-slate-500" strokeWidth={1} />
+        <p>Free delivery</p>
+        <small>little description</small>
+      </span>
+      <span className="flex flex-col gap-y-1">
+        <Package className="w-6 h-6 text-slate-500" strokeWidth={1} />
+        <p>Safe Packaging</p>
+        <small>little description</small>
+      </span>
+      <span className="flex flex-col gap-y-1">
+        <ShieldCheck className="w-6 h-6 text-slate-500" strokeWidth={1} />
+        <p>Shop warranty</p>
+        <small>little description</small>
+      </span>
+    </section>
   );
 }
 

@@ -12,7 +12,7 @@ import React from "react";
 
 function MainProductContainer() {
   return (
-    <div className="w-full h-full py-12 px-12">
+    <div className="w-full h-full py-6 px-12">
       <Carousel>
         <CarouselContent>
           <CarouselItem>
@@ -21,7 +21,7 @@ function MainProductContainer() {
               alt="main-image"
               width={1920}
               height={1080}
-              className="md:object-cover h-[800px] rounded-md"
+              className="md:object-cover h-[590px] rounded-md"
             />
           </CarouselItem>
           <CarouselItem>
@@ -30,7 +30,7 @@ function MainProductContainer() {
               alt="main-image"
               width={1920}
               height={1080}
-              className="object-cover h-[800px]"
+              className="object-cover h-[590px]"
             />
           </CarouselItem>
           <CarouselItem>
@@ -39,7 +39,7 @@ function MainProductContainer() {
               alt="main-image"
               width={1920}
               height={1080}
-              className="object-cover h-[800px]"
+              className="object-cover h-[590px]"
             />
           </CarouselItem>
           <CarouselItem>
@@ -48,7 +48,7 @@ function MainProductContainer() {
               alt="main-image"
               width={1920}
               height={1080}
-              className="object-cover h-[800px]"
+              className="object-cover h-[590px]"
             />
           </CarouselItem>
         </CarouselContent>

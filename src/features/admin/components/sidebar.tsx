@@ -2,8 +2,13 @@
 import React from "react";
 import Logo from "./logo";
 import Link from "next/link";
+import { logoutAction } from "@/features/auth/actions/auth-action";
 
 function Sidebar() {
+  const logout = async () => {
+    await logoutAction();
+  };
+
   return (
     <div className="h-full border-r-[1.25px] overflow-y-auto bg-white shadow-sm flex flex-col">
       <div className="p-6">
@@ -48,9 +53,12 @@ function Sidebar() {
             <span className="py-2 px-4 hover:bg-slate-100">
               <Link href="/admin/settings">Settings</Link>
             </span>
-            <span className="py-2 px-4 hover:bg-red-100">
-              <div className="cursor-pointer capitalize text-red-500">logout</div>
-            </span>
+            <div
+              className="cursor-pointer capitalize text-red-500 py-2 px-4 hover:bg-red-100"
+              onClick={logout}
+            >
+              logout
+            </div>
           </div>
         </section>
       </div>

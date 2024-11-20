@@ -27,8 +27,9 @@ function SignInForm() {
     const login = loginAction(formData.emailAddress, formData.password);
     login
       .then((response) => {
-        setError(response.message);
-        console.log(response);
+        if (!response.success) {
+          setError(response.message);
+        }
       })
       .finally(() => {
         setLoading(false);

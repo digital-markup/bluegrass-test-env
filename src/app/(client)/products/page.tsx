@@ -1,20 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Logo from "@/features/admin/components/logo";
 import CatalogSideView from "@/features/products/components/catalog-side-view";
 import CatalogHorizontalView from "@/features/products/components/items-horizontal-view";
+import ProductsSidebar from "@/features/products/components/products-sidebar";
 import SidebarMobile from "@/features/products/components/sidebar-mobile";
+import Navbar from "@/features/public/components/navbar";
 import { Search, User2 } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
-function ProductsPage({
-  params,
-  searchParams,
-}: {
-  params: string;
-  searchParams: any;
-}) {
-  console.log({ searchParams, params });
+function ProductsPage() {
   return (
     <div className="w-full min-h-screen">
       {/* Mobile first design */}
@@ -45,13 +39,17 @@ function ProductsPage({
           </div>
         </header>
       </div>
-      {/* Create the complete mobile nav bar */}
-      {/* Create a left side sidebar for categories navigation */}
-      {/* Create a clickable badges to display the products */}
-      {/* Display none on tablet & large screens */}
-      <div className="flex flex-col gap-y-4 py-12 w-full">
-        <div className="container mx-auto">
-          {/* Product container goes here */}
+      <div className="w-full h-full lg:grid lg:grid-cols-[320px_1fr] gap-x-6">
+        <div className="hidden lg:flex">
+          <Navbar className="text-slate-700" />
+          <Suspense>
+            <ProductsSidebar />
+          </Suspense>
+        </div>
+        <div className="flex flex-col gap-y-4 py-12 w-full">
+          <div className="container mx-auto">
+            {/* Product container goes here */}
+          </div>
         </div>
       </div>
     </div>

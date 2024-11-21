@@ -1,11 +1,16 @@
+import { cn } from "@/lib/utils";
 import { Search, User2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-async function Navbar() {
+interface NavbarProps {
+  className?: string;
+}
+
+async function Navbar({ className }: NavbarProps) {
   return (
-    <div className="w-full h-12 backdrop-blur-md bg-white/10 justify-center xl:px-36 hidden md:flex fixed z-50">
+    <div className="w-full h-12 backdrop-blur-md bg-white/10 justify-center xl:px-36 hidden md:flex fixed z-50 shadow">
       {/* Mobile Navbar */}
       <nav className="flex items-center gap-x-14">
         <div className="flex space-x-10 items-center">
@@ -17,28 +22,28 @@ async function Navbar() {
             className="h-6 w-6"
           />
           <Link href="/products?all=true">
-            <p className="nav-item-text">All Products</p>
+            <p className={cn("nav-item-text", className)}>All Products</p>
           </Link>
           <Link href="/products?products=true&apple=true">
-            <p className="nav-item-text">Apple</p>
+            <p className={cn("nav-item-text", className)}>Apple</p>
           </Link>
           <Link href="/products?products=true&android=true">
-            <p className="nav-item-text">Android</p>
+            <p className={cn("nav-item-text", className)}>Android</p>
           </Link>
           <Link href="/products?products=true&watches=true">
-            <p className="nav-item-text">Watches</p>
+            <p className={cn("nav-item-text", className)}>Watches</p>
           </Link>
           <Link href="/products?products=true&headphones=true">
-            <p className="nav-item-text">Headsets</p>
+            <p className={cn("nav-item-text", className)}>Headsets</p>
           </Link>
           <Link href="/products?products=true&bluetooth=true">
-            <p className="nav-item-text">Bluetooth</p>
+            <p className={cn("nav-item-text", className)}>Bluetooth</p>
           </Link>
           <Link href="/products?products=true&accessories=true">
-            <p className="nav-item-text">Accessories</p>
+            <p className={cn("nav-item-text", className)}>Accessories</p>
           </Link>
           <Link href="/products?products=true&contact=true">
-            <p className="nav-item-text">Contact</p>
+            <p className={cn("nav-item-text", className)}>Contact</p>
           </Link>
         </div>
         <div className="flex space-x-5">

@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "sonner";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,11 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.className} antialiased`}>
-        {children}
-        <Toaster />
-        <Sonner />
-      </body>
+      <NuqsAdapter>
+        <body className={`${font.className} antialiased`}>
+          {children}
+          <Toaster />
+          <Sonner />
+        </body>
+      </NuqsAdapter>
     </html>
   );
 }

@@ -1,6 +1,7 @@
 import Logo from "@/features/admin/components/logo";
 import CatalogSideView from "@/features/products/components/catalog-side-view";
 import CatalogHorizontalView from "@/features/products/components/items-horizontal-view";
+import ProductsContainer from "@/features/products/components/products-container";
 import ProductsSidebar from "@/features/products/components/products-sidebar";
 import SidebarMobile from "@/features/products/components/sidebar-mobile";
 import Navbar from "@/features/public/components/navbar";
@@ -49,6 +50,7 @@ function ProductsPage() {
         <div className="flex flex-col gap-y-4 py-12 w-full">
           <div className="container mx-auto">
             {/* Product container goes here */}
+            <ProductsContainer />
           </div>
         </div>
       </div>

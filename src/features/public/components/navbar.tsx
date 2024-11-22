@@ -3,6 +3,7 @@ import { Search, User2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { publicRoutes } from "../routes";
 
 interface NavbarProps {
   className?: string;
@@ -21,30 +22,11 @@ async function Navbar({ className }: NavbarProps) {
             height={32}
             className="h-6 w-6"
           />
-          <Link href="/products?all=true">
-            <p className={cn("nav-item-text", className)}>All Products</p>
-          </Link>
-          <Link href="/products?products=true&apple=true">
-            <p className={cn("nav-item-text", className)}>Apple</p>
-          </Link>
-          <Link href="/products?products=true&android=true">
-            <p className={cn("nav-item-text", className)}>Android</p>
-          </Link>
-          <Link href="/products?products=true&watches=true">
-            <p className={cn("nav-item-text", className)}>Watches</p>
-          </Link>
-          <Link href="/products?products=true&headphones=true">
-            <p className={cn("nav-item-text", className)}>Headsets</p>
-          </Link>
-          <Link href="/products?products=true&bluetooth=true">
-            <p className={cn("nav-item-text", className)}>Bluetooth</p>
-          </Link>
-          <Link href="/products?products=true&accessories=true">
-            <p className={cn("nav-item-text", className)}>Accessories</p>
-          </Link>
-          <Link href="/products?products=true&contact=true">
-            <p className={cn("nav-item-text", className)}>Contact</p>
-          </Link>
+          {publicRoutes.map((route) => (
+            <Link key={route.key} href={route.path}>
+              <p className={cn("nav-item-text", className)}>{route.label}</p>
+            </Link>
+          ))}
         </div>
         <div className="flex space-x-5">
           <Link href="#">

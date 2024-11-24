@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Logo from "@/features/admin/components/logo";
 import CatalogSideView from "@/features/products/components/catalog-side-view";
 import CatalogHorizontalView from "@/features/products/components/items-horizontal-view";

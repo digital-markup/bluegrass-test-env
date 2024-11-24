@@ -1,3 +1,4 @@
+import getProductById from "@/features/products/actions/getProductById.action";
 import ContactUs from "@/features/products/components/contact-us";
 import MainProductContainer from "@/features/products/components/main-product-container";
 import MainProductDetails from "@/features/products/components/main-product-details";
@@ -6,7 +7,17 @@ import ProductInfoTabs from "@/features/products/components/product-info-tabs";
 import ServicesContainer from "@/features/products/components/service-container";
 import React from "react";
 
-function SingleProductPage() {
+interface SingleProductPageParams {
+  params: { params: string };
+}
+
+async function SingleProductPage({
+  params: { params },
+}: SingleProductPageParams) {
+  // call the function from API
+  const product = await getProductById(params);
+  // console.log(product);
+
   return (
     <div className="w-full min-h-screen px-6">
       {/* Breadcrumb nav*/}
@@ -15,15 +26,22 @@ function SingleProductPage() {
           <div className="lg:sticky top-8 lg:h-screen overflow-auto">
             <div className="flex flex-col gap-y-4">
               {/* main product layout */}
-              <MainProductContainer />
+              <MainProductContainer images={product.images} />
               <ServicesContainer />
               <ContactUs />
             </div>
           </div>
           <div className="flex flex-col gap-y-6 lg:py-12">
             {/* side product information */}
-            <MainProductHeader />
-            <MainProductDetails />
+            <MainProductHeader stock={product.stock} title={product.title} />
+            <MainProductDetails
+              battery={product.battery}
+              camera={product.camera}
+              colors={product.colors}
+              displayInfo={product.displayInfo}
+              ramInformation={product.ramInformation}
+              storage={product.storage}
+            />
           </div>
         </div>
         <div className="flex flex-col w-full h-full pl-12">

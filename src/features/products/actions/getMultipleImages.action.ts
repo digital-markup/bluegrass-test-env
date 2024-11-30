@@ -9,8 +9,8 @@ const getProductImages = async (product: Product) => {
         // get main product images
         if (product.images.length > 0) {
             await Promise.allSettled(product.images.map(async (image: ProductImage) => {
-                const img = await getS3ObjectService(image.imgUrl);
-                image.imgUrl = img.url;
+                const img = await getS3ObjectService(image.id);
+                image.id = img.url;
             }));
         }
         // get variant images from the store

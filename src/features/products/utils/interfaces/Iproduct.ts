@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface ImageStoreProps {
     imgUrl: string | string[];
     setImgUrl: (url: string) => void;
@@ -24,7 +25,8 @@ export interface TagsStore {
 
 export interface ProductImage {
     id: string;
-    imgUrl: string;
+    large: string;
+    small: string
 }
 
 export interface ProductVariant {
@@ -43,19 +45,20 @@ export interface Product {
     id: string;
     title: string;
     sku: string;
-    productDescription: string;
+    product_description: string;
     category: string;
     tags: string[];
     brand: string;
-    displayInfo: string;
-    storage: string;
+    display_info: string;
+    storage: string[];
     camera: string;
     battery: string;
     colors: string[];
-    ramInformation: string;
+    ram_information: string;
     availability: string;
+    additional_information: any;
     stock: number;
-    compareAtPrice: boolean;
+    compare_at_price: boolean;
     images: ProductImage[];
     services: ProductService[];
     variants: ProductVariant[];

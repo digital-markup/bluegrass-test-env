@@ -30,7 +30,7 @@ function PagesNavigator() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div>
+      <div className="px-6">
         <Button variant="secondary" type="button">
           <p className="text-sm capitalize">filter</p>
           <SlidersHorizontal size={20} className="mr-2" />

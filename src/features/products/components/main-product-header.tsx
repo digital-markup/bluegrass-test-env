@@ -1,16 +1,22 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { LucideBox } from "lucide-react";
 import React from "react";
 
 interface MainProductHeaderProps {
   title: string;
   stock: number;
+  className?: string;
 }
 
-function MainProductHeader({ stock, title }: MainProductHeaderProps) {
+function MainProductHeader({
+  stock,
+  title,
+  className,
+}: MainProductHeaderProps) {
   return (
-    <header className="flex flex-col gap-y-6 pb-6 w-full">
+    <header className={cn("flex flex-col gap-y-6 pb-6 w-full", className)}>
       <h2 className="text-4xl font-semibold text-end">{title}</h2>
       <div className="border-y border-slate-400 flex w-full flex-row justify-end items-center">
         <div className="flex flex-row gap-x-3 py-6 items-center">

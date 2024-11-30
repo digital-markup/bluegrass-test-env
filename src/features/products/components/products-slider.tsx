@@ -4,7 +4,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import ItemCard from "@/features/public/components/item-card";
 import React from "react";
 
 interface ProductSliderProps {
@@ -18,19 +17,19 @@ function ProductSlider({ productType }: ProductSliderProps) {
       <BaseCarousel>
         <CarouselContent>
           <CarouselItem className="md:basis-1/2 lg:basis-1/4">
-            <ItemCard />
+            {/* <ItemCard /> */}
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/4">
-            <ItemCard />
+            {/* <ItemCard /> */}
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/4">
-            <ItemCard />
+            {/* <ItemCard /> */}
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/4">
-            <ItemCard />
+            {/* <ItemCard /> */}
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/4">
-            <ItemCard />
+            {/* <ItemCard /> */}
           </CarouselItem>
         </CarouselContent>
       </BaseCarousel>

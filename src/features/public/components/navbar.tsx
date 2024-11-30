@@ -11,7 +11,7 @@ interface NavbarProps {
 
 async function Navbar({ className }: NavbarProps) {
   return (
-    <div className="w-full h-12 backdrop-blur-md bg-white/10 justify-center xl:px-36 hidden md:flex fixed z-50 shadow">
+    <div className="w-full h-12 backdrop-blur-md bg-gray-800/60 justify-center xl:px-36 hidden md:flex fixed z-50 shadow">
       {/* Mobile Navbar */}
       <nav className="flex items-center gap-x-14">
         <div className="flex space-x-10 items-center">

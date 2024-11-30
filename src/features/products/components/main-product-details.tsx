@@ -3,10 +3,11 @@
 import Image from "next/image";
 import React from "react";
 import ProductColorPicker from "./product-color-picker";
+import ItemsStorage from "./items-storage";
 
 interface MainProductDetailsProps {
   displayInfo: string;
-  storage: string;
+  storage: string[];
   camera: string;
   battery: string;
   colors: string[];
@@ -54,12 +55,11 @@ function MainProductDetails({
       </section>
       <section className="flex flex-col gap-y-4">
         <p className="text-lg font-semibold">Memory</p>
-        <span className="flex w-full items-center gap-x-6">
-          <h2 className="font-semibold text-2xl">{storage}</h2>
-          <p className="text-slate-400">
-            You can choose between 128GB and 256GB in storage
-          </p>
-        </span>
+        <div className="w-full grid grid-cols-2 gap-4">
+          {storage.map((item, index) => (
+            <ItemsStorage key={index} title={item} />
+          ))}
+        </div>
       </section>
       <section className="flex flex-col gap-y-4">
         <p className="text-lg font-semibold">Camera</p>

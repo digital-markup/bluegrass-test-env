@@ -1,5 +1,7 @@
 import Footer from "@/components/footer";
+import OverlayText from "@/components/overlay-text";
 import { Button } from "@/components/ui/button";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   ContainerContent,
   ContainerHeader,
@@ -8,6 +10,7 @@ import {
 } from "@/features/products/components/item-container";
 import ItemsHeader from "@/features/products/components/items-header";
 import UnCategorizedSection from "@/features/products/components/uncat-items-section";
+import { BrandType } from "@/features/products/utils/enum";
 import BestsellerSection from "@/features/public/components/best-seller-section";
 import Header from "@/features/public/components/header";
 import Navbar from "@/features/public/components/navbar";
@@ -20,7 +23,8 @@ export default function Home() {
     <main className="w-full min-h-screen">
       <Navbar />
       <header className="bg-black min-h-screen">
-        <picture>
+        <OverlayText />
+        <picture className="opacity-75">
           <source srcSet="/img/hero-desktop.jpg" media="(min-width: 1024px)" />
           <source media="(min-width: 768px)" srcSet="/img/hero-medium.jpg" />
           <source media="(min-width: 360px)" srcSet="/img/hero-mobile.jpg" />
@@ -28,7 +32,7 @@ export default function Home() {
             src={"/img/hero-desktop.jpg"}
             alt="hero"
             fill
-            className="object-cover h-[720px]"
+            className="object-cover h-[720px] opacity-85"
           />
         </picture>
       </header>
@@ -73,8 +77,11 @@ export default function Home() {
                 />
               </ContainerHeader>
               <ContainerContent>
-                <ProductContainer routes={"routes.apple"} />
-                <Link href={"/products?products=true&apple=true"}>
+                <ProductContainer routes={BrandType.APPLE} />
+                <Link
+                  href={"/products?apple=true"}
+                  className="w-full flex items-center justify-center pt-8"
+                >
                   <Button variant="secondary">Browse All</Button>
                 </Link>
               </ContainerContent>
@@ -91,6 +98,23 @@ export default function Home() {
           </div>
           <div className="pt-12 w-full h-full flex flex-col">
             {/* Samsung section */}
+            <ItemContainer>
+              <ContainerHeader>
+                <ItemsHeader
+                  title="Samsung"
+                  subTitle="Shop Samsung products and pick what best for you"
+                />
+              </ContainerHeader>
+              <ContainerContent>
+                <ProductContainer routes={BrandType.SAMSUNG} />
+                <Link
+                  href={"/products?apple=true"}
+                  className="w-full flex items-center justify-center pt-8"
+                >
+                  <Button variant="secondary">Browse All</Button>
+                </Link>
+              </ContainerContent>
+            </ItemContainer>
           </div>
         </div>
       </div>
@@ -114,7 +138,7 @@ export default function Home() {
           </Header>
           <div className="pt-12 w-full h-full">
             {/* Our story section */}
-            <section className="flex flex-col pb-20">
+            <section className="flex flex-col pb-10">
               <p className="text-slate-400">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
                 tempore dolorum blanditiis veniam quia beatae. Totam impedit
@@ -139,7 +163,56 @@ export default function Home() {
                 deleniti doloremque ipsa facere!
               </p>
             </section>
-            <section>{/* Image grid */}</section>
+            <section className="flex flex-col pb-20 gap-y-6">
+              <header>
+                <h2 className="font-semibold text-blue-500 md:text-xl">
+                  Our Happy Customers
+                </h2>
+              </header>
+              {/* Image grid mobile */}
+              <div className="md:hidden flex">
+                <ScrollArea className="w-[340px] h-full">
+                  <div className="flex gap-3 w-max">
+                    <Image
+                      src={"/img/customers/customers.png"}
+                      alt="customer-1"
+                      width={300}
+                      height={300}
+                      className="object-contain rounded-md"
+                    />
+                    <Image
+                      src={"/img/customers/customers_2.png"}
+                      alt="customer-1"
+                      width={300}
+                      height={300}
+                      className="object-cover rounded-md"
+                    />
+                    <Image
+                      src={"/img/customers/customers_3.png"}
+                      alt="customer-1"
+                      width={300}
+                      height={300}
+                      className="object-cover rounded-md"
+                    />
+                    <Image
+                      src={"/img/customers/customers_4.png"}
+                      alt="customer-1"
+                      width={300}
+                      height={300}
+                      className="object-cover rounded-md"
+                    />
+                    <Image
+                      src={"/img/customers/customers_5.png"}
+                      alt="customer-1"
+                      width={300}
+                      height={300}
+                      className="object-cover rounded-md"
+                    />
+                  </div>
+                  <ScrollBar orientation="horizontal" />
+                </ScrollArea>
+              </div>
+            </section>
           </div>
         </div>
       </div>

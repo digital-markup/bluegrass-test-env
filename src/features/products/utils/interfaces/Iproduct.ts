@@ -59,6 +59,7 @@ export interface Product {
     additional_information: any;
     stock: number;
     compare_at_price: boolean;
+    feature_image: ProductImage[];
     images: ProductImage[];
     services: ProductService[];
     variants: ProductVariant[];

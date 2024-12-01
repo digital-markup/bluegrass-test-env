@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -8,15 +9,25 @@ import React from "react";
 
 interface ItemCardProps {
   id: string | undefined;
+  feature_image: any;
   images: any;
   title: string;
 }
 
-function ItemCard({ id, images, title }: ItemCardProps) {
-  const [imgList] = images;
+function ItemCard({ id, images, feature_image, title }: ItemCardProps) {
+  const [imgList, setImgList] = React.useState({ small: "", large: "" });
+
+  React.useEffect(() => {
+    if (Array.isArray(feature_image)) {
+      setImgList({
+        small: feature_image[0].small,
+        large: feature_image[0].large,
+      });
+    }
+  }, [feature_image]);
 
   return (
-    <div className="flex flex-col gap-y-3 border rounded-lg hover:shadow-lg transition-all px-6 py-9">
+    <div className="flex flex-col gap-y-3 border rounded-lg hover:shadow-lg transition-all px-6 py-9 mt-10">
       <div className="flex flex-col gap-y-2">
         <figure className="text-center mb-3">
           <picture>

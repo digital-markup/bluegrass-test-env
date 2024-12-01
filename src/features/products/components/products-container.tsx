@@ -7,9 +7,10 @@ import PagesNavigator from "@/components/pages-navigator";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import { InsertProduct } from "@/db/schema";
+import { Product } from "../utils/interfaces/Iproduct";
 
 function ProductsContainer() {
-  const [products, setProducts] = React.useState<InsertProduct[]>([]);
+  const [products, setProducts] = React.useState<Product[]>([]);
 
   const onFetch = React.useCallback(() => {
     console.log("searchParams");
@@ -24,7 +25,7 @@ function ProductsContainer() {
       <PagesNavigator />
       <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 px-6">
         {products.map((product) => (
-          <ItemCard key={product.id} id={product.id} {...product} />
+          <ItemCard key={product.id} {...product} />
         ))}
       </div>
     </div>

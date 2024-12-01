@@ -28,6 +28,16 @@ const productRoutes = [
             { key: "galaxy-buds", value: "Galaxy Buds" }
         ]
     },
+    {
+        key: "accessories", values: [
+            { key: "speakers", value: "Speakers" },
+            { key: "headphones", value: "Headphones" },
+            { key: "earbuds", value: "Earbuds" },
+            { key: "mouse-n-keyboard", value: "Mouse & Keyboard" },
+            { key: "megsafe", value: "Megsafe" },
+            { key: "homepods", value: "HomePods" },
+        ]
+    }
 ]
 export { productRoutes }
 export default publicRoutes

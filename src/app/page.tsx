@@ -11,6 +11,9 @@ import {
 import ItemsHeader from "@/features/products/components/items-header";
 import UnCategorizedSection from "@/features/products/components/uncat-items-section";
 import { BrandType } from "@/features/products/utils/enum";
+import AccessoriesContainer, {
+  AccessoriesMobile,
+} from "@/features/public/components/accessories-container";
 import BestsellerSection from "@/features/public/components/best-seller-section";
 import Header from "@/features/public/components/header";
 import Navbar from "@/features/public/components/navbar";
@@ -129,6 +132,11 @@ export default function Home() {
             <UnCategorizedSection />
           </div>
         </div>
+      </div>
+      <div className="bg-white flex flex-col">
+        {/* Accessories section */}
+        <AccessoriesContainer routes={"accessories"} />
+        <AccessoriesMobile routes={"accessories"} />
       </div>
       <div className="bg-white">
         <div className="container mx-auto p-4 md:p-8">

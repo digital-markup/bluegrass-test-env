@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import TypeScrollBar from "@/components/types-scrollbar";
 import ProductsContainer from "@/features/products/components/products-container";
@@ -11,11 +12,10 @@ function ProductsPage({
   searchParams: any;
 }) {
   const { category: data } = searchParams;
-  console.log(data);
   return (
     <div className="w-full min-h-screen">
       <div className="flex flex-col gap-y-4 py-12 w-full">
-        <TypeScrollBar params="any" />
+        <TypeScrollBar params={data}/>
         <div className="container mx-auto">
           {/* Product container goes here */}
           <ProductsContainer />

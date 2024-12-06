@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import Navbar from "@/features/public/components/navbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <NuqsAdapter>
         <body className={`${font.className} antialiased`}>
+          <Navbar />
           {children}
           <Toaster />
           <Sonner />

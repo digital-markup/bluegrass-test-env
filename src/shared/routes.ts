@@ -39,5 +39,15 @@ const productRoutes = [
         ]
     }
 ]
-export { productRoutes }
+
+const categoryTypesRoutes = [
+    { id: crypto.randomUUID(), name: "Apple", slug: "apple", logo: "/icons/product/apple.svg" },
+    { id: crypto.randomUUID(), name: "Samsung", slug: "samsung", logo: "/icons/product/samsung-96-color.svg" },
+    { id: crypto.randomUUID(), name: "Huawei", slug: "huawei", logo: "/icons/product/huawei-64.svg" },
+    { id: crypto.randomUUID(), name: "Xiaomi", slug: "xiaomi", logo: "/icons/product/xiaomi-100.svg" },
+    { id: crypto.randomUUID(), name: "ZTE", slug: "zte", logo: "/icons/product/zte.svg" },
+    { id: crypto.randomUUID(), name: "Nubia", slug: "nubia", logo: "/icons/product/nubia.svg" },
+];
+
+export { productRoutes, categoryTypesRoutes }
 export default publicRoutes

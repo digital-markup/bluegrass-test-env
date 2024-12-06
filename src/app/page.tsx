@@ -16,7 +16,6 @@ import AccessoriesContainer, {
 } from "@/features/public/components/accessories-container";
 import BestsellerSection from "@/features/public/components/best-seller-section";
 import Header from "@/features/public/components/header";
-import Navbar from "@/features/public/components/navbar";
 import NewArrivalsCarousel from "@/features/public/components/new-arrivals-carousel";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +23,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="w-full min-h-screen">
-      <Navbar />
       <header className="bg-black min-h-screen">
         <OverlayText />
         <picture className="opacity-75">

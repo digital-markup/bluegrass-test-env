@@ -4,9 +4,6 @@
 import React from "react";
 import ItemCard from "@/features/public/components/item-card";
 import PagesNavigator from "@/components/pages-navigator";
-import { useSearchParams } from "next/navigation";
-import axios from "axios";
-import { InsertProduct } from "@/db/schema";
 import { Product } from "../utils/interfaces/Iproduct";
 
 function ProductsContainer() {

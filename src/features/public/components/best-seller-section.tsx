@@ -25,11 +25,11 @@ function BestsellerSection() {
 
   return (
     <div className="container mx-auto p-4 md:p-8 flex flex-col gap-y-8">
-      <Header classNames="mb-6 2xl:pr-5 pt-10">
-        <h2 className="lg:text-4xl font-semibold">Bestseller.</h2>
+      <Header classNames="md:mb-6 2xl:pr-5 pt-10">
+        <h2 className="lg:text-4xl text-2xl font-semibold">Bestseller.</h2>
         <LayoutGrid className="h-6 w-6" />
       </Header>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 pt-12">
+      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 md:pt-12">
         {items.map((item) => (
           <ItemCard key={item.id} {...item} />
         ))}

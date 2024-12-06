@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,9 +13,10 @@ interface ItemCardProps {
   feature_image: any;
   images: any;
   title: string;
+  colors: string[];
 }
 
-function ItemCard({ id, images, feature_image, title }: ItemCardProps) {
+function ItemCard({ id, images, feature_image, title, colors }: ItemCardProps) {
   const [imgList, setImgList] = React.useState({ small: "", large: "" });
 
   React.useEffect(() => {
@@ -27,7 +29,7 @@ function ItemCard({ id, images, feature_image, title }: ItemCardProps) {
   }, [feature_image]);
 
   return (
-    <div className="flex flex-col gap-y-3 border rounded-lg hover:shadow-lg transition-all px-6 py-9 mt-10">
+    <div className="flex flex-col gap-y-3 border rounded-lg hover:shadow-lg transition-all px-6 md:py-9 mt-10">
       <div className="flex flex-col gap-y-2">
         <figure className="text-center mb-3">
           <picture>
@@ -49,18 +51,22 @@ function ItemCard({ id, images, feature_image, title }: ItemCardProps) {
             />
           </picture>
         </figure>
-        <h3 className="text-lg font-medium">{title}</h3>
-        {/* <p className="text-slate-400 text-sm">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat
-          molestias sint nostrum quas quasi, delectus tenetur a beatae, minima
-          non!
-        </p> */}
-        <span className="flex gap-x-2 items-center mt-3">
-          <Button>Quick View</Button>
-          <Link href={`/single/${id}`}>
+        <h3 className="md:text-lg text-sm font-medium text-center">{title}</h3>
+        <div className="flex gap-2 flex-wrap justify-center">
+          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
+          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
+          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
+          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
+        </div>
+        <div className="flex md:flex-row flex-col gap-x-2 items-center justify-center md:mt-6 md:pb-4">
+          <Button className="hidden md:inline-flex">Quick View</Button>
+          <Link href={`/single/${id}`} className="hidden md:inline-flex">
             <Button variant={"secondary"}>Browse</Button>
           </Link>
-        </span>
+          <Link href={`/single/${id}`} className="md:hidden inline-flex py-2">
+            <Button variant={"link"} size={"sm"}>Browse</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

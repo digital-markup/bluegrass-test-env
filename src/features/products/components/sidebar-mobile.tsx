@@ -1,24 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { publicRoutes } from "@/features/public/routes";
 
 interface SidebarMobileProps {
   color: string;
+  className?: string;
 }
 
-function SidebarMobile({ color }: SidebarMobileProps) {
+function SidebarMobile({ color, className }: SidebarMobileProps) {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
     <div>
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,13 +35,19 @@ function SidebarMobile({ color }: SidebarMobileProps) {
           </svg>
         </SheetTrigger>
         <SheetContent side={"top"} className={cn(color, "h-screen w-full")}>
-          <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
-            <SheetDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </SheetDescription>
-          </SheetHeader>
+          <div className="w-full h-full px-4 pt-8">
+            <ul className="flex flex-col gap-y-4 justify-start items-start">
+              {publicRoutes.map((route) => (
+                <li key={route.path}>
+                  <Link href={route.path} onClick={() => setIsOpen(false)}>
+                    <p className="text-slate-800 text-2xl font-medium">
+                      {route.label}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </SheetContent>
       </Sheet>
     </div>

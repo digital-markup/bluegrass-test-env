@@ -29,11 +29,11 @@ function ItemCard({ id, images, feature_image, title, colors }: ItemCardProps) {
   }, [feature_image]);
 
   return (
-    <div className="flex flex-col gap-y-3 border rounded-lg hover:shadow-lg transition-all px-0 md:py-0 mt-10">
+    <div className="flex flex-col gap-y-3 border rounded-lg hover:shadow-lg transition-all md:px-3 md:py-0 mt-10">
       <div className="flex flex-col items-center gap-y-2">
-        <figure className="text-center mb-3 w-[220px] p-3">
+        <figure className="text-center mb-3 md:w-[220px] p-3">
           <picture>
-            <source media="(min-width: 768px)" srcSet={imgList.large} className="w-[180px]"/>
+            <source media="(min-width: 768px)" srcSet={imgList.large} className="md:w-[180px]"/>
             <source media="(min-width: 360px)" srcSet={imgList.small} />
             <Image
               src={
@@ -42,7 +42,7 @@ function ItemCard({ id, images, feature_image, title, colors }: ItemCardProps) {
               alt="apple"
               height={200}
               width={200}
-              className="object-center w-[225px]"
+              className="object-center md:w-[225px]"
               placeholder="blur"
               blurDataURL={
                 "https://i.ibb.co/TLWCC4P/iphone-card-40-iphone16hero-202409.jpg"

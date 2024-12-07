@@ -46,11 +46,11 @@ function ProductsContainer() {
         <div className="px-6">
           <Button className="bg-slate-800 text-white" type="button" size={"sm"}>
             <p className="text-xs capitalize">filter</p>
-            <SlidersHorizontal size={14} className="mr-2" />
+            <SlidersHorizontal size={14} className="md:mr-2" />
           </Button>
         </div>
       </header>
-      <div className="w-full h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 px-0">
+      <div className="w-full h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 md:px-0 px-4">
         {products.map((product) => (
           <ItemCard key={product.id} {...product} />
         ))}

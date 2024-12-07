@@ -7,6 +7,7 @@ import React from "react";
 import ProductSlider from "./products-slider";
 import { BrandType } from "../utils/enum";
 import { productRoutes } from "@/shared/routes";
+import MobileProductSlider from "./mobile-product-slider";
 
 interface BaseContainerProps {
   children: React.ReactNode | React.ReactNode[];
@@ -48,23 +49,28 @@ function ProductContainer({ routes }: ContainerNavbarProps) {
     }
   }, [routes]);
   return (
-    <div className="my-10 hidden md:block">
-      {tabs.length > 0 && (
-        <Tabs key={tabs[0].key} defaultValue={tabs[0].key} className="w-full">
-          <TabsList className="w-full">
+    <div className="my-10 flex flex-col">
+      <div className="hidden md:block">
+        {tabs.length > 0 && (
+          <Tabs key={tabs[0].key} defaultValue={tabs[0].key} className="w-full">
+            <TabsList className="w-full">
+              {tabs.map((item: any) => (
+                <TabsTrigger key={item.key} value={item.key}>
+                  {item.value}
+                </TabsTrigger>
+              ))}
+            </TabsList>
             {tabs.map((item: any) => (
-              <TabsTrigger key={item.key} value={item.key}>
-                {item.value}
-              </TabsTrigger>
+              <TabsContent key={item.key} value={item.key}>
+                <ProductSlider productType={item.key} />
+              </TabsContent>
             ))}
-          </TabsList>
-          {tabs.map((item: any) => (
-            <TabsContent key={item.key} value={item.key}>
-              <ProductSlider productType={item.key} />
-            </TabsContent>
-          ))}
-        </Tabs>
-      )}
+          </Tabs>
+        )}
+      </div>
+      <div className="md:hidden">
+        <MobileProductSlider props={tabs} />
+      </div>
     </div>
   );
 }

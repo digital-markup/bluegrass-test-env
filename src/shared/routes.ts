@@ -117,5 +117,14 @@ const categoryTypesRoutes = [
     }
 ];
 
-export { productRoutes, categoryTypesRoutes }
+const otherBrands = [
+    { id: 1, name: 'Huawei', slug: 'huawei', icon: '/icons/product/huawei.svg' },
+    { id: 2, name: 'Nokia', slug: 'nokia', icon: '/icons/product/nokia.svg' },
+    { id: 3, name: 'Oppo', slug: 'oppo', icon: '/icons/product/oppo.svg' },
+    { id: 4, name: 'Xiaomi', slug: 'xiaomi', icon: '/icons/product/xiaomi.svg' },
+    { id: 5, name: 'TCL', slug: 'tcl', icon: '/icons/product/tcl.svg' },
+    { id: 6, name: 'ZTE', slug: 'zte', icon: '/icons/product/zte.svg' },
+]
+
+export { productRoutes, categoryTypesRoutes, otherBrands }
 export default publicRoutes

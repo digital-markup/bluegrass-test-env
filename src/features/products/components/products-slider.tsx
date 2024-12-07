@@ -46,4 +46,24 @@ function ProductSlider({ productType }: ProductSliderProps) {
   );
 }
 
+ProductSlider.Brand = function ProductBrandSlider({
+  products,
+}: {
+  products: Product[];
+}) {
+  return (
+    <div className="w-full h-full">
+      <BaseCarousel>
+        <CarouselContent>
+          {products.map((item, idx) => (
+            <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/4">
+              <ItemCard key={item.id} {...item} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </BaseCarousel>
+    </div>
+  );
+};
+
 export default ProductSlider;

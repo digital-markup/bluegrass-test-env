@@ -9,6 +9,7 @@ import {
   ProductContainer,
 } from "@/features/products/components/item-container";
 import ItemsHeader from "@/features/products/components/items-header";
+import OtherProductsSection from "@/features/products/components/other-products-section";
 import UnCategorizedSection from "@/features/products/components/uncat-items-section";
 import { BrandType } from "@/features/products/utils/enum";
 import AccessoriesContainer, {
@@ -117,6 +118,8 @@ export default function Home() {
               </ContainerContent>
             </ItemContainer>
           </div>
+          {/* Other products section */}
+          <OtherProductsSection />
         </div>
       </div>
       <div className="bg-black text-white">
@@ -146,27 +149,41 @@ export default function Home() {
             {/* Our story section */}
             <section className="flex flex-col pb-10">
               <p className="text-slate-400">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
-                tempore dolorum blanditiis veniam quia beatae. Totam impedit
-                quis expedita, aut, pariatur ipsam similique dignissimos id
-                nesciunt dolor assumenda odio consequuntur? Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Exercitationem recusandae
-                neque dicta optio eum. Maxime rem, asperiores voluptas totam
-                iure, debitis odit velit cum assumenda nemo deleniti doloremque
-                ipsa facere! iure, debitis odit velit cum assumenda nemo
-                deleniti doloremque ipsa facere!
+                Blue Grass Cellular is Sri Lanka&apos;s leading mobile retailer,
+                proudly serving the nation with over 27 years of industry
+                excellence. Specializing in an extensive range of cutting-edge
+                mobile phones and premium accessories, we are committed to
+                delivering unparalleled quality and value. Every product we
+                offer is backed by genuine warranties, ensuring reliability and
+                peace of mind for our customers.
               </p>
               <br />
               <p className="text-slate-400">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
-                tempore dolorum blanditiis veniam quia beatae. Totam impedit
-                quis expedita, aut, pariatur ipsam similique dignissimos id
-                nesciunt dolor assumenda odio consequuntur? Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Exercitationem recusandae
-                neque dicta optio eum. Maxime rem, asperiores voluptas totam
-                iure, debitis odit velit cum assumenda nemo deleniti doloremque
-                ipsa facere! iure, debitis odit velit cum assumenda nemo
-                deleniti doloremque ipsa facere!
+                Our unwavering focus on exceptional service has established us
+                as a trusted name in the industry, where professionalism,
+                innovation, and customer satisfaction converge. We recognize
+                that technology is not just about devices but about empowering
+                lives, which is why our knowledgeable team is dedicated to
+                helping you find tailored solutions that meet your specific
+                needs.
+              </p>
+              <br />
+              <p className="text-slate-400">
+                At Blue Grass Cellular, we go beyond sales—we build
+                relationships rooted in trust, offering not only the latest in
+                mobile technology but also ongoing support and expertise. From
+                state-of-the-art smartphones to essential accessories, we
+                provide a seamless shopping experience designed to exceed
+                expectations.
+              </p>
+              <br />
+              <p className="text-slate-400">
+                Discover the Blue Grass Cellular difference: where a legacy of
+                excellence, a commitment to innovation, and a customer-first
+                philosophy make us the premier destination for all your mobile
+                technology needs. Trust us to deliver more than products—trust
+                us to deliver a promise of quality, reliability, and
+                unparalleled service.
               </p>
             </section>
             <section className="flex flex-col pb-20 gap-y-6">

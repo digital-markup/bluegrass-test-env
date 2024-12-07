@@ -29,7 +29,7 @@ function BestsellerSection() {
         <h2 className="lg:text-4xl text-2xl font-semibold">Bestseller.</h2>
         <LayoutGrid className="h-6 w-6" />
       </Header>
-      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 md:pt-12">
+      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 md:pt-12 lg:px-20">
         {items.map((item) => (
           <ItemCard key={item.id} {...item} />
         ))}

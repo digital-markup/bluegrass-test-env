@@ -50,7 +50,7 @@ function ProductsContainer() {
           </Button>
         </div>
       </header>
-      <div className="w-full h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 px-6">
+      <div className="w-full h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 px-0">
         {products.map((product) => (
           <ItemCard key={product.id} {...product} />
         ))}

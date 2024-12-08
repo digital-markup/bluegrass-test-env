@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import OverlayText from "@/components/overlay-text";
+import ServicesEffectGridLayout from "@/components/services-effect-grid-layout";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import ImageGridDesktop from "@/features/products/components/image-grid-desktop";
@@ -20,6 +21,7 @@ import BestsellerSection from "@/features/public/components/best-seller-section"
 import Header from "@/features/public/components/header";
 import Navbar from "@/features/public/components/navbar";
 import NewArrivalsCarousel from "@/features/public/components/new-arrivals-carousel";
+import { services } from "@/shared/routes";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -240,6 +242,31 @@ export default function Home() {
               </div>
               {/* Image grid desktop */}
               <ImageGridDesktop />
+              <div className="w-full flex flex-col gap-6">
+                <Header classNames="mb-7 2xl:pr-5 pt-10 flex-col gap-y-2 justify-start items-start">
+                  <h2 className="lg:text-4xl font-semibold">Our Services.</h2>
+                  <p>What we offer for you</p>
+                </Header>
+                <p className="text-slate-700">
+                  Blue Grass Cellular is Sri Lanka’s premier mobile retailer,
+                  proudly serving the nation with over 27 years of unmatched
+                  excellence in the industry. Renowned for our specialization in
+                  high-quality mobile phones and accessories, we have set the
+                  benchmark for reliability, innovation, and superior customer
+                  service.
+                </p>
+                <ServicesEffectGridLayout items={services} />
+                <p className="text-slate-600">
+                  At Blue Grass Cellular, we don’t just sell mobile
+                  technology—we create lasting relationships with our customers,
+                  built on trust, quality, and service excellence. Experience
+                  the pinnacle of professionalism and discover why we are Sri
+                  Lanka’s preferred destination for mobile devices and
+                  accessories. With Blue Grass Cellular, you can trust that
+                  every interaction will deliver innovation, reliability, and
+                  complete satisfaction.
+                </p>
+              </div>
             </section>
           </div>
         </div>

@@ -19,7 +19,7 @@ const images = [
     src: "/img/customers/customers_3.png",
     width: 300,
     height: 400,
-    className: "col-span-1 row-span-2",
+    className: "col-span-2 row-span-2",
   },
   {
     src: "/img/customers/customers_4.png",
@@ -29,6 +29,12 @@ const images = [
   },
   {
     src: "/img/customers/customers_5.png",
+    width: 400,
+    height: 300,
+    className: "col-span-1 row-span-2",
+  },
+  {
+    src: "/img/customers/customers_6.jpg",
     width: 400,
     height: 300,
     className: "col-span-1 row-span-2",

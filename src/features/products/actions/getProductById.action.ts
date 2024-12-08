@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server"
 
 import { getProductByIdAsync } from "@/db/queries/products.query";
 import { getProductImages } from "./getMultipleImages.action";
 
-const getProductById = async (id: string) => {
+const getProductById = async (id: string):Promise<any> => {
     const response = await getProductByIdAsync(id);
 
     if (!response.success) {

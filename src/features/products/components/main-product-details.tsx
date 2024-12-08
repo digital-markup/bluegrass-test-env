@@ -41,7 +41,7 @@ function MainProductDetails({
         <ProductColorPicker colors={colors} />
       </section>
       <section className="flex flex-col gap-y-4">
-        <p className="text-lg font-medium">Battery</p>
+        <p className="text-lg font-semibold">Battery</p>
         <span className="flex w-full items-center gap-x-6">
           <Image
             src={"/img/battery-icon.jpeg"}

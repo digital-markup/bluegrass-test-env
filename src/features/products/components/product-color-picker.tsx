@@ -26,7 +26,7 @@ function ProductColorPicker({ colors }: ProductColorPickerProps) {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <h2 className="text-base font-semibold capitalize">
+      <h2 className="text-lg font-semibold capitalize">
         colors: {selectedColor}
       </h2>
       <div className="flex gap-x-4 justify-start items-center my-2">

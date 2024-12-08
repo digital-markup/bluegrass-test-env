@@ -2,6 +2,7 @@ import Footer from "@/components/footer";
 import OverlayText from "@/components/overlay-text";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import ImageGridDesktop from "@/features/products/components/image-grid-desktop";
 import {
   ContainerContent,
   ContainerHeader,
@@ -17,6 +18,7 @@ import AccessoriesContainer, {
 } from "@/features/public/components/accessories-container";
 import BestsellerSection from "@/features/public/components/best-seller-section";
 import Header from "@/features/public/components/header";
+import Navbar from "@/features/public/components/navbar";
 import NewArrivalsCarousel from "@/features/public/components/new-arrivals-carousel";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,6 +26,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="w-full min-h-screen">
+      <Navbar />
       <header className="bg-black min-h-screen">
         <OverlayText />
         <picture className="opacity-75">
@@ -183,7 +186,7 @@ export default function Home() {
                 philosophy make us the premier destination for all your mobile
                 technology needs. Trust us to deliver more than products—trust
                 us to deliver a promise of quality, reliability, and
-                unparalleled service.
+                unparalleled service.
               </p>
             </section>
             <section className="flex flex-col pb-20 gap-y-6">
@@ -235,6 +238,8 @@ export default function Home() {
                   <ScrollBar orientation="horizontal" />
                 </ScrollArea>
               </div>
+              {/* Image grid desktop */}
+              <ImageGridDesktop />
             </section>
           </div>
         </div>

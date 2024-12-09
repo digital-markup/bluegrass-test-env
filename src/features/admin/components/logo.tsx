@@ -11,7 +11,7 @@ function Logo() {
         height={32}
         className="h-6 w-6"
       />
-      <p className="text-black font-bold">Bluegrass Cellular</p>
+      {/* <p className="text-black font-bold">Bluegrass Cellular</p> */}
     </span>
   );
 }

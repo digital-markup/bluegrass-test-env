@@ -26,7 +26,7 @@ function ServicesEffectGridLayout({
       {items.map((item, idx) => (
         <Link
           href={item?.link}
-          key={item?.link}
+          key={idx}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -86,7 +86,12 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("text-sky-700 font-medium text-xl tracking-wide mt-4", className)}>
+    <h4
+      className={cn(
+        "text-sky-700 font-medium text-xl tracking-wide mt-4",
+        className
+      )}
+    >
       {children}
     </h4>
   );

@@ -56,11 +56,11 @@ function TypeScrollBar({ params }: TypeScrollBarProps) {
                       <Image
                         src={route.logo}
                         alt={route.slug}
-                        width={40}
-                        height={40}
-                        className="object-cover h-[40px] w-[40px] rounded-full"
+                        width={100}
+                        height={100}
+                        className="object-contain h-[40px] w-[40px] rounded"
                       />
-                      <figcaption className="text-xs">{route.name}</figcaption>
+                      <figcaption className="text-xs text-black">{route.name}</figcaption>
                     </figure>
                   </CarouselItem>
                 )

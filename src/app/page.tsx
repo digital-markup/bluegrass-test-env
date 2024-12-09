@@ -11,12 +11,9 @@ import {
   ProductContainer,
 } from "@/features/products/components/item-container";
 import ItemsHeader from "@/features/products/components/items-header";
-import OtherProductsSection from "@/features/products/components/other-products-section";
 import UnCategorizedSection from "@/features/products/components/uncat-items-section";
 import { BrandType } from "@/features/products/utils/enum";
-import AccessoriesContainer, {
-  AccessoriesMobile,
-} from "@/features/public/components/accessories-container";
+import AccessoriesContainer from "@/features/public/components/accessories-container";
 import BestsellerSection from "@/features/public/components/best-seller-section";
 import Header from "@/features/public/components/header";
 import Navbar from "@/features/public/components/navbar";
@@ -28,7 +25,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="w-full min-h-screen">
-      <Navbar />
+      <Navbar slug="home" />
       <header className="bg-black min-h-screen">
         <OverlayText />
         <picture className="opacity-75">
@@ -124,7 +121,26 @@ export default function Home() {
             </ItemContainer>
           </div>
           {/* Other products section */}
-          <OtherProductsSection />
+          <div className="pt-12 w-full h-full flex flex-col">
+            {/* Samsung section */}
+            <ItemContainer>
+              <ContainerHeader>
+                <ItemsHeader
+                  title="Samsung"
+                  subTitle="Shop Samsung products and pick what best for you"
+                />
+              </ContainerHeader>
+              <ContainerContent>
+                <ProductContainer routes={BrandType.SAMSUNG} />
+                <Link
+                  href={"/products?apple=true"}
+                  className="w-full flex items-center justify-center pt-8"
+                >
+                  <Button variant="secondary">Browse All</Button>
+                </Link>
+              </ContainerContent>
+            </ItemContainer>
+          </div>
         </div>
       </div>
       <div className="bg-black text-white">
@@ -142,18 +158,19 @@ export default function Home() {
       <div className="bg-white flex flex-col">
         {/* Accessories section */}
         <AccessoriesContainer routes={"accessories"} />
-        <AccessoriesMobile routes={"accessories"} />
       </div>
       <div className="bg-white">
         <div className="container mx-auto p-4 md:p-8">
-          <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 justify-start items-start">
-            <h2 className="lg:text-4xl font-semibold">Our Story.</h2>
-            <p>Customer journey and our story</p>
+          <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 md:justify-start md:items-start justify-center items-center">
+            <h2 className="lg:text-4xl font-semibold text-2xl">Our Story.</h2>
+            <p className="font-light text-slate-500">
+              Customer journey and our story
+            </p>
           </Header>
           <div className="pt-12 w-full h-full">
             {/* Our story section */}
             <section className="flex flex-col pb-10">
-              <p className="text-slate-400">
+              <p className="text-slate-400 md:text-start text-center">
                 Blue Grass Cellular is Sri Lanka&apos;s leading mobile retailer,
                 proudly serving the nation with over 27 years of industry
                 excellence. Specializing in an extensive range of cutting-edge
@@ -163,7 +180,7 @@ export default function Home() {
                 peace of mind for our customers.
               </p>
               <br />
-              <p className="text-slate-400">
+              <p className="text-slate-400 md:text-start text-center">
                 Our unwavering focus on exceptional service has established us
                 as a trusted name in the industry, where professionalism,
                 innovation, and customer satisfaction converge. We recognize
@@ -173,7 +190,7 @@ export default function Home() {
                 needs.
               </p>
               <br />
-              <p className="text-slate-400">
+              <p className="text-slate-400 md:text-start text-center">
                 At Blue Grass Cellular, we go beyond sales—we build
                 relationships rooted in trust, offering not only the latest in
                 mobile technology but also ongoing support and expertise. From
@@ -182,7 +199,7 @@ export default function Home() {
                 expectations.
               </p>
               <br />
-              <p className="text-slate-400">
+              <p className="text-slate-400 md:text-start text-center">
                 Discover the Blue Grass Cellular difference: where a legacy of
                 excellence, a commitment to innovation, and a customer-first
                 philosophy make us the premier destination for all your mobile
@@ -243,11 +260,13 @@ export default function Home() {
               {/* Image grid desktop */}
               <ImageGridDesktop />
               <div className="w-full flex flex-col gap-6">
-                <Header classNames="mb-7 2xl:pr-5 pt-10 flex-col gap-y-2 justify-start items-start">
-                  <h2 className="lg:text-4xl font-semibold">Our Services.</h2>
+                <Header classNames="mb-7 2xl:pr-5 pt-10 flex-col gap-y-2 md:justify-start md:items-start justify-center items-center">
+                  <h2 className="lg:text-4xl font-semibold text-2xl">
+                    Our Services.
+                  </h2>
                   <p>What we offer for you</p>
                 </Header>
-                <p className="text-slate-700">
+                <p className="text-slate-700 text-center">
                   Blue Grass Cellular is Sri Lanka’s premier mobile retailer,
                   proudly serving the nation with over 27 years of unmatched
                   excellence in the industry. Renowned for our specialization in
@@ -256,7 +275,7 @@ export default function Home() {
                   service.
                 </p>
                 <ServicesEffectGridLayout items={services} />
-                <p className="text-slate-600">
+                <p className="text-slate-600 text-center">
                   At Blue Grass Cellular, we don’t just sell mobile
                   technology—we create lasting relationships with our customers,
                   built on trust, quality, and service excellence. Experience

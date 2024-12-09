@@ -43,7 +43,7 @@ const images = [
 
 function ImageGridDesktop() {
   return (
-    <section className="container mx-auto px-4 py-16">
+    <section className="container mx-auto px-4 py-16 hidden md:block">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
         {images.map((image, index) => (
           <div

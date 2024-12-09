@@ -12,6 +12,17 @@ const getProductByQuery = async (tagNames: string[]) => {
     return data;
 }
 
+const getProducts = async (): Promise<any> => {
+    const client = getSupabaseClient();
+
+    const { data, error } = await client.from("products").select("id, title, product_description, availability, feature_image, images, variations");
+
+    if (error) {
+        throw new Error("Error fetching products" + error);
+    }
+    return data;
+}
+
 const getProductsByCategory = async (category: string, brand?: string): Promise<any> => {
     const client = getSupabaseClient();
 
@@ -54,6 +65,6 @@ const getProductsByBrand = async (brand: string): Promise<any> => {
     return data;
 }
 
-export { getProductsByType, getProductsByCategory, getProductsByBrand }
+export { getProductsByType, getProductsByCategory, getProductsByBrand, getProducts };
 
 export default getProductByQuery

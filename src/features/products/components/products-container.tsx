@@ -8,7 +8,9 @@ import { Product } from "../utils/interfaces/Iproduct";
 import { useSearchParams } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import getProductsAction from "../actions/getProductsAction";
+import getProductsAction, {
+  getAllProductsAction,
+} from "../actions/getProductsAction";
 
 function ProductsContainer() {
   const [products, setProducts] = React.useState<Product[]>([]);
@@ -30,13 +32,25 @@ function ProductsContainer() {
     });
   }, []);
 
-  React.useEffect(() => {
-    if (searchParams) {
-      onFetch(searchParams.get("category")!, searchParams.get("brand")!);
-    }
+  //  get all products
+  const onFetchAll = React.useCallback(() => {
+    const getAll = async () => {
+      const result = await getAllProductsAction();
+      return result;
+    };
 
+    getAll().then((data) => {
+      setProducts(data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    if (searchParams.size > 0) {
+      return onFetch(searchParams.get("category")!, searchParams.get("brand")!);
+    }
     // else fetch all the products and set them to the state
-  }, [onFetch, searchParams]);
+    return onFetchAll();
+  }, [onFetch, onFetchAll, searchParams]);
 
   return (
     <div className="w-full flex flex-col gap-y-10 md:mt-14 lg:px-10">

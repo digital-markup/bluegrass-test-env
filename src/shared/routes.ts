@@ -48,15 +48,15 @@ const categoryTypesRoutes = [
         },
         {
             id: crypto.randomUUID(),
-            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung-96-color.svg"
+            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung.svg"
         },
         {
             id: crypto.randomUUID(),
-            name: "Huawei", slug: "huawei", logo: "/icons/product/huawei-64.svg"
+            name: "Huawei", slug: "huawei", logo: "/icons/product/huawei.svg"
         },
         {
             id: crypto.randomUUID(),
-            name: "Xiaomi", slug: "xiaomi", logo: "/icons/product/xiaomi-100.svg"
+            name: "Xiaomi", slug: "xiaomi", logo: "/icons/product/xiaomi.svg"
         },
         {
             id: crypto.randomUUID(),
@@ -64,8 +64,16 @@ const categoryTypesRoutes = [
         },
         {
             id: crypto.randomUUID(),
-            name: "Nubia", slug: "nubia", logo: "/icons/product/nubia.svg"
+            name: "Oppo", slug: "oppo", logo: "/icons/product/oppo.svg"
         },
+        {
+            id: crypto.randomUUID(),
+            name: "Nokia", slug: "nokia", logo: "/icons/product/nokia.svg"
+        },
+        {
+            id: crypto.randomUUID(),
+            name: "TCL", slug: "tcl", logo: "/icons/product/tcl.svg"
+        }
         ]
     },
     {
@@ -126,5 +134,44 @@ const otherBrands = [
     { id: 6, name: 'ZTE', slug: 'zte', icon: '/icons/product/zte.svg' },
 ]
 
-export { productRoutes, categoryTypesRoutes, otherBrands }
+const services = [
+    {
+        link: "#",
+        title: "Extensive Product Range",
+        description:
+            "Offering a comprehensive selection of the latest smartphones, advanced gadgets, and premium accessories to meet every need and preference.",
+    },
+    {
+        link: "#",
+        title: "Guaranteed Quality",
+        description:
+            "Every product is backed by genuine warranties, ensuring reliability, durability, and peace of mind for our customers.",
+    },
+    {
+        link: "#",
+        title: "Trusted Reputation",
+        description:
+            "With nearly three decades of expertise, we have earned the trust of countless customers, making us a household name for mobile technology solutions in Sri Lanka.",
+    },
+    {
+        link: "#",
+        title: "Exceptional Customer Service",
+        description:
+            "Our highly knowledgeable and professional team is dedicated to delivering personalized solutions, ensuring every customer finds the perfect fit for their requirements.",
+    },
+    {
+        link: "#",
+        title: "Commitment to Excellence",
+        description:
+            "From product quality to after-sales support, our focus on excellence ensures an unparalleled shopping experience.",
+    },
+    {
+        link: "#",
+        title: "Value-Driven Solutions",
+        description:
+            "We prioritize offering the best value for money, combining premium products with competitive pricing and expert support",
+    },
+];
+
+export { productRoutes, categoryTypesRoutes, otherBrands, services }
 export default publicRoutes

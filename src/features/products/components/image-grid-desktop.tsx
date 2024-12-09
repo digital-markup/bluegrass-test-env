@@ -19,7 +19,7 @@ const images = [
     src: "/img/customers/customers_3.png",
     width: 300,
     height: 400,
-    className: "col-span-1 row-span-2",
+    className: "col-span-2 row-span-2",
   },
   {
     src: "/img/customers/customers_4.png",
@@ -33,11 +33,17 @@ const images = [
     height: 300,
     className: "col-span-1 row-span-2",
   },
+  {
+    src: "/img/customers/customers_6.jpg",
+    width: 400,
+    height: 300,
+    className: "col-span-1 row-span-2",
+  },
 ];
 
 function ImageGridDesktop() {
   return (
-    <section className="container mx-auto px-4 py-16">
+    <section className="container mx-auto px-4 py-16 hidden md:block">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
         {images.map((image, index) => (
           <div

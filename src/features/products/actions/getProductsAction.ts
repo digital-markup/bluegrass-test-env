@@ -1,5 +1,5 @@
 "use server";
-import { getProductsByCategory } from "@/db/queries/getProducts.query";
+import { getProducts, getProductsByCategory } from "@/db/queries/getProducts.query";
 
 interface ProductProps {
     category: string,
@@ -14,4 +14,13 @@ const getProductsAction = async ({ category, brand }: ProductProps) => {
     return response;
 }
 
+const getAllProductsAction = async () => {
+    const response = await getProducts();
+    if (!response) {
+        throw new Error("Error fetching products");
+    }
+    return response;
+}
+
+export { getAllProductsAction }
 export default getProductsAction

@@ -2,11 +2,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import QuickView from "./quick-view";
+import ColorPicker from "./color-picker";
 
 interface ItemCardProps {
   id: string | undefined;
@@ -33,7 +34,11 @@ function ItemCard({ id, images, feature_image, title, colors }: ItemCardProps) {
       <div className="flex flex-col items-center gap-y-2">
         <figure className="text-center mb-3 md:w-[220px] p-3">
           <picture>
-            <source media="(min-width: 768px)" srcSet={imgList.large} className="md:w-[180px]"/>
+            <source
+              media="(min-width: 768px)"
+              srcSet={imgList.large}
+              className="md:w-[180px]"
+            />
             <source media="(min-width: 360px)" srcSet={imgList.small} />
             <Image
               src={
@@ -52,19 +57,18 @@ function ItemCard({ id, images, feature_image, title, colors }: ItemCardProps) {
           </picture>
         </figure>
         <h3 className="md:text-lg text-sm font-medium text-center">{title}</h3>
-        <div className="flex gap-2 flex-wrap justify-center">
-          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
-          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
-          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
-          <Badge className="w-4 h-4 p-0 bg-black" variant={"secondary"}></Badge>
-        </div>
+        <ColorPicker />
         <div className="flex md:flex-row flex-col gap-x-2 items-center justify-center md:mt-6 md:pb-4">
-          <Button className="hidden md:inline-flex">Quick View</Button>
+          <div className="hidden md:inline-flex">
+            <QuickView />
+          </div>
           <Link href={`/single/${id}`} className="hidden md:inline-flex">
             <Button variant={"secondary"}>Browse</Button>
           </Link>
           <Link href={`/single/${id}`} className="md:hidden inline-flex py-2">
-            <Button variant={"link"} size={"sm"}>Browse</Button>
+            <Button variant={"link"} size={"sm"}>
+              Browse
+            </Button>
           </Link>
         </div>
       </div>

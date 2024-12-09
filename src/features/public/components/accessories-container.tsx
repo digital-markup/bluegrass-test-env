@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import MobileProductSlider from "@/features/products/components/mobile-product-slider";
 
 interface AccessoriesContainerProps {
   routes: string;
@@ -33,8 +34,8 @@ function AccessoriesContainer({ routes }: AccessoriesContainerProps) {
   }, [routes]);
 
   return (
-    <div className="w-full h-full hidden md:block">
-      <div className="container mx-auto p-4 md:p-8">
+    <div className="w-full h-full">
+      <div className="container mx-auto p-4 md:p-8 hidden md:block">
         <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 justify-start items-start">
           <h2 className="lg:text-4xl font-semibold">Accessories.</h2>
           <p>Other accessories are listed here</p>
@@ -61,7 +62,7 @@ function AccessoriesContainer({ routes }: AccessoriesContainerProps) {
                 </TabsList>
                 {tabs.map((item: any) => (
                   <TabsContent key={item.key} value={item.key}>
-                    {/* <ProductSlider productType={item.key} /> */}
+                    <ProductSlider.Accessories productType={item.key} />
                   </TabsContent>
                 ))}
               </Tabs>
@@ -69,99 +70,14 @@ function AccessoriesContainer({ routes }: AccessoriesContainerProps) {
           </div>
         </ItemContainer>
       </div>
-    </div>
-  );
-}
-
-function AccessoriesMobile({ routes }: AccessoriesContainerProps) {
-  return (
-    <div className="w-full h-full block md:hidden">
-      <div className="container mx-auto p-4 md:p-8">
-        <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 justify-start md:items-start items-center">
-          <h2 className="lg:text-4xl font-semibold text-center md:text-start">
-            Accessories.
-          </h2>
-          <p>Other accessories are listed here</p>
+      <div className="md:hidden px-4 py-6 flex flex-col gap-y-6">
+        <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 md:justify-start md:items-start justify-center items-center">
+          <h2 className="lg:text-4xl font-semibold text-2xl">Accessories.</h2>
+          <p className="font-light text-slate-500">Other accessories are listed here</p>
         </Header>
-        {/* Accessories go here */}
-        <ItemContainer>
-          <Carousel>
-            <CarouselContent>
-              <CarouselItem>
-                <div className="flex w-full justify-center items-center h-14">
-                  <Button
-                    variant={"secondary"}
-                    className="rounded-sm bg-slate-100/45"
-                  >
-                    <Image
-                      src={"/icons/subwooferx48.png"}
-                      alt="subwoofer"
-                      width={48}
-                      height={48}
-                      className="w-8 h-8"
-                    />
-                    Speakers
-                  </Button>
-                </div>
-              </CarouselItem>
-              <CarouselItem>
-                <div className="flex w-full justify-center items-center">
-                  <Button
-                    variant={"secondary"}
-                    className="rounded-sm bg-slate-100/45 gap-x-2"
-                  >
-                    <Image
-                      src={"/icons/earbudsx50.png"}
-                      alt="keyboard"
-                      width={48}
-                      height={48}
-                      className="w-8 h-8"
-                    />
-                    Earbuds
-                  </Button>
-                </div>
-              </CarouselItem>
-              <CarouselItem>
-                <div className="flex w-full justify-center items-center">
-                  <Button
-                    variant={"secondary"}
-                    className="rounded-sm bg-slate-100/45"
-                  >
-                    Earphones
-                  </Button>
-                </div>
-              </CarouselItem>
-              <CarouselItem>
-                <div className="flex w-full justify-center items-center">
-                  <Button
-                    variant={"secondary"}
-                    className="rounded-sm bg-slate-100/45"
-                  >
-                    <Image
-                      src={"/icons/keyboardx50.png"}
-                      alt="keyboard"
-                      width={48}
-                      height={48}
-                      className="w-8 h-8"
-                    />
-                    Mouse & Keyboard
-                  </Button>
-                </div>
-              </CarouselItem>
-              <CarouselItem>
-                <p>Megsafe</p>
-              </CarouselItem>
-              <CarouselItem>
-                <p>Homepods</p>
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </ItemContainer>
+        <MobileProductSlider props={tabs} />
       </div>
     </div>
   );
 }
-export { AccessoriesMobile };
 export default AccessoriesContainer;

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Footer from "@/components/footer";
 import TypeScrollBar from "@/components/types-scrollbar";
 import ProductsContainer from "@/features/products/components/products-container";
 import Navbar from "@/features/public/components/navbar";
@@ -23,6 +24,7 @@ function ProductsPage({
           <ProductsContainer />
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

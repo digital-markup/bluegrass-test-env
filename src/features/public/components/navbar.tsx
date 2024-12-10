@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { publicRoutes } from "../routes";
-import Logo from "@/features/admin/components/logo";
 import SidebarMobile from "@/features/products/components/sidebar-mobile";
 import SearchBox from "@/components/search-box";
 
@@ -63,7 +62,7 @@ async function Navbar({ className, slug }: NavbarProps) {
         </nav>
       </div>
       <div className="md:hidden">
-        <MobileNavbar slug="home" />
+        <MobileNavbar slug={slug} />
       </div>
     </>
   );
@@ -79,7 +78,27 @@ async function MobileNavbar({ slug }: NavbarProps) {
         "w-full h-12 py-8 px-6 flex justify-between items-center shadow-md fixed z-50"
       )}
     >
-      <Logo />
+      {slug === "home" ? (
+        <Link href={"/"}>
+          <Image
+            src="/logo.svg"
+            alt="Logo"
+            width={20}
+            height={20}
+            className="object-contain"
+          />
+        </Link>
+      ) : (
+        <Link href={"/"}>
+          <Image
+            src="/logob.svg"
+            alt="Logo"
+            width={20}
+            height={20}
+            className="object-contain"
+          />
+        </Link>
+      )}
       <ul className="flex gap-x-3">
         <li>
           <SearchBox />

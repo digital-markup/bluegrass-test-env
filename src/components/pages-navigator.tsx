@@ -29,7 +29,7 @@ function PagesNavigator({ children, title }: PagesNavigatorProps) {
   };
 
   return (
-    <header className="flex md:justify-between items-center justify-end px-6 py-1 border-b">
+    <header className="flex justify-between items-center md:px-6 py-1 border-b">
       <Button
         type="button"
         variant={"ghost"}
@@ -40,7 +40,7 @@ function PagesNavigator({ children, title }: PagesNavigatorProps) {
         <ArrowLeft size={20} />
         Previous
       </Button>
-      <div className="w-max h-14 flex items-center justify-center gap-x-6">
+      <div className="w-max md:h-14 h-10 flex items-center justify-center md:gap-x-6">
         <div>
           <Button type="button" variant={"ghost"} size={"sm"}>
             <Heart size={20} className="text-red-500" />
@@ -48,7 +48,7 @@ function PagesNavigator({ children, title }: PagesNavigatorProps) {
           </Button>
         </div>
         <Separator orientation="vertical" />
-        <div>
+        <div className="w-max text-slate-500">
           <Button type="button" variant={"ghost"} size={"sm"}>
             <Share2 size={20} />
             <p className="text-xs">Share</p>

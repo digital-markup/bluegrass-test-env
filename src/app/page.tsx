@@ -26,9 +26,9 @@ export default function Home() {
   return (
     <main className="w-full min-h-screen">
       <Navbar slug="home" />
-      <header className="bg-black min-h-screen">
+      <header className="bg-black md:min-h-screen">
         <OverlayText />
-        <picture className="opacity-75">
+        {/* <picture className="opacity-75">
           <source srcSet="/img/hero-desktop.jpg" media="(min-width: 1024px)" />
           <source media="(min-width: 768px)" srcSet="/img/hero-medium.jpg" />
           <source media="(min-width: 360px)" srcSet="/img/hero-mobile.jpg" />
@@ -38,9 +38,18 @@ export default function Home() {
             fill
             className="object-cover h-[720px] opacity-85"
           />
-        </picture>
+        </picture> */}
+        <div className="w-full flex absolute md:top-1 top-28 opacity-75">
+          <video className="w-full" autoPlay loop muted playsInline>
+            <source
+              src="/videos/hero-vid.mp4"
+              type="video/mp4"
+              media="(min-width: 1024px)"
+            />
+          </video>
+        </div>
       </header>
-      <div className="flex flex-col gap-3 w-full bg-black pb-6">
+      <div className="flex flex-col gap-3 w-full bg-black pb-12 md:pt-52 pt-48">
         <section className="text-white w-full p-4 md:p-8">
           <Header classNames="container mx-auto">
             <h2 className="text-white lg:text-4xl 2xl:pl-16 pl-6">

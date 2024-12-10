@@ -90,7 +90,7 @@ const categoryTypesRoutes = [
         },
         {
             id: crypto.randomUUID(),
-            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung-96-color.svg"
+            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung.svg"
         },
         ]
     },
@@ -101,7 +101,7 @@ const categoryTypesRoutes = [
         },
         {
             id: crypto.randomUUID(),
-            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung-96-color.svg"
+            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung.svg"
         }]
     },
     {
@@ -110,7 +110,7 @@ const categoryTypesRoutes = [
             name: "Apple", slug: "apple", logo: "/icons/product/apple.svg"
         }, {
             id: crypto.randomUUID(),
-            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung-96-color.svg"
+            name: "Samsung", slug: "samsung", logo: "/icons/product/samsung.svg"
         }]
     },
     {
@@ -120,7 +120,7 @@ const categoryTypesRoutes = [
         },
         {
             id: crypto.randomUUID(),
-            name: "Meta Quest 3", slug: "meta-quest-3", logo: "/icons/product/meta-quest-3.svg"
+            name: "Meta Quest 3", slug: "meta", logo: "/icons/product/meta.svg"
         }],
     }
 ];

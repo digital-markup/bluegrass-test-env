@@ -15,7 +15,7 @@ const getProductByQuery = async (tagNames: string[]) => {
 const getProducts = async (): Promise<any> => {
     const client = getSupabaseClient();
 
-    const { data, error } = await client.from("products").select("id, title, product_description, availability, feature_image, images, variations");
+    const { data, error } = await client.from("products").select("id, title, product_description, availability, feature_image, images, variations, colors");
 
     if (error) {
         throw new Error("Error fetching products" + error);
@@ -27,11 +27,11 @@ const getProductsByCategory = async (category: string, brand?: string): Promise<
     const client = getSupabaseClient();
 
     const { data, error } = await client.from("products")
-        .select("id, title, product_description, availability, feature_image, images, variations").eq("category", category);
+        .select("id, title, product_description, availability, feature_image, images, variations, colors, brand").eq("category", category);
 
     if (brand) {
         const { data, error } = await client.from("products")
-            .select("id, title, product_description, availability, feature_image, images, variations").eq("category", category).ilike("brand", `%${brand}%`);
+            .select("id, title, product_description, availability, feature_image, images, variations, colors, brand").eq("category", category).ilike("brand", `%${brand}%`);
 
         if (error) {
             throw new Error("Error fetching products" + error);
@@ -47,7 +47,7 @@ const getProductsByCategory = async (category: string, brand?: string): Promise<
 const getProductsByType = async (type: string): Promise<any> => {
     const client = getSupabaseClient();
 
-    const { data, error } = await client.from("products").select("id, title, product_description, availability, feature_image, images, variations").eq("type", type);
+    const { data, error } = await client.from("products").select("id, title, product_description, availability, feature_image, images, variations, colors").eq("type", type);
     if (error) {
         throw new Error("Error fetching products" + error);
     }
@@ -57,7 +57,7 @@ const getProductsByType = async (type: string): Promise<any> => {
 const getProductsByBrand = async (brand: string): Promise<any> => {
     const client = getSupabaseClient();
 
-    const { data, error } = await client.from("products").select("id, title, product_description, availability, feature_image, images, variations")
+    const { data, error } = await client.from("products").select("id, title, product_description, availability, feature_image, images, variations, colors")
         .ilike("brand", `%${brand}%`);
     if (error) {
         throw new Error("Error fetching products" + error);

@@ -37,6 +37,16 @@ const productRoutes = [
             { key: "megsafe", value: "Megsafe" },
             { key: "homepods", value: "HomePods" },
         ]
+    },
+    {
+        key: "otherBrands",
+        values: [
+            { key: "huawei", value: "Huawei" },
+            { key: "nokia", value: "Nokia" },
+            { key: "oppo", value: "Oppo" },
+            { key: "xiaomi", value: "Xiaomi" },
+            { key: "tcl", value: "TCL" }, { key: "zte", value: "ZTE" }
+        ]
     }
 ]
 

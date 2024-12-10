@@ -8,6 +8,7 @@ import {
   ContainerContent,
   ContainerHeader,
   ItemContainer,
+  OtherBrandsContainer,
   ProductContainer,
 } from "@/features/products/components/item-container";
 import ItemsHeader from "@/features/products/components/items-header";
@@ -130,17 +131,26 @@ export default function Home() {
             </ItemContainer>
           </div>
           {/* Other products section */}
+          <div className="w-full h-full pt-12">
+            <Image
+              src={"/img/other-phones-hero.webp"}
+              alt="img-alt"
+              width={1920}
+              height={1080}
+              className="object-cover h-[600px] rounded-lg"
+            />
+          </div>
           <div className="pt-12 w-full h-full flex flex-col">
-            {/* Samsung section */}
+            {/* Other Brands section */}
             <ItemContainer>
               <ContainerHeader>
                 <ItemsHeader
-                  title="Samsung"
-                  subTitle="Shop Samsung products and pick what best for you"
+                  title="Other Brands"
+                  subTitle="Browse other brands and pick what best for you"
                 />
               </ContainerHeader>
               <ContainerContent>
-                <ProductContainer routes={BrandType.SAMSUNG} />
+                <OtherBrandsContainer />
                 <Link
                   href={"/products?apple=true"}
                   className="w-full flex items-center justify-center pt-8"

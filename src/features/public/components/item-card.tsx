@@ -57,7 +57,7 @@ function ItemCard({ id, images, feature_image, title, colors }: ItemCardProps) {
           </picture>
         </figure>
         <h3 className="md:text-lg text-sm font-medium text-center">{title}</h3>
-        <ColorPicker />
+        <ColorPicker colors={colors} />
         <div className="flex md:flex-row flex-col gap-x-2 items-center justify-center md:mt-6 md:pb-4">
           <div className="hidden md:inline-flex">
             <QuickView />

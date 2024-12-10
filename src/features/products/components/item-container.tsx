@@ -8,6 +8,7 @@ import ProductSlider from "./products-slider";
 import { BrandType } from "../utils/enum";
 import { productRoutes } from "@/shared/routes";
 import MobileProductSlider from "./mobile-product-slider";
+import OtherBrandCarousel from "./other-brands-carousel";
 
 interface BaseContainerProps {
   children: React.ReactNode | React.ReactNode[];
@@ -75,4 +76,67 @@ function ProductContainer({ routes }: ContainerNavbarProps) {
   );
 }
 
-export { ItemContainer, ContainerHeader, ContainerContent, ProductContainer };
+// Other Brands Container
+
+function OtherBrandsContainer() {
+  const [tabs, setTabs] = React.useState<any[]>([]);
+  const [key, setKey] = React.useState<any>("huawei");
+
+  React.useEffect(() => {
+    // get the other bands from publicRoutes
+    setTabs(productRoutes[3].values);
+  }, []);
+
+  const onTabChange = (key: any) => {
+    setKey(key);
+  };
+  return (
+    <div className="my-10 flex flex-col">
+      <div className="hidden md:block">
+        <Tabs
+          defaultValue="huawei"
+          className="w-full"
+          onValueChange={onTabChange}
+        >
+          <TabsList className="w-full">
+            <TabsTrigger value="huawei">Huawei</TabsTrigger>
+            <TabsTrigger value="xiaomi">Xiaomi</TabsTrigger>
+            <TabsTrigger value="zte">ZTE</TabsTrigger>
+            <TabsTrigger value="oppo">Oppo</TabsTrigger>
+            <TabsTrigger value="nokia">Nokia</TabsTrigger>
+            <TabsTrigger value="tcl">TCL</TabsTrigger>
+          </TabsList>
+          <TabsContent value="huawei">
+            <OtherBrandCarousel props={key} />
+          </TabsContent>
+          <TabsContent value="xiaomi">
+            <OtherBrandCarousel props={key} />
+          </TabsContent>
+          <TabsContent value="zte">
+            <OtherBrandCarousel props={key} />
+          </TabsContent>
+          <TabsContent value="oppo">
+            <OtherBrandCarousel props={key} />
+          </TabsContent>
+          <TabsContent value="nokia">
+            <OtherBrandCarousel props={key} />
+          </TabsContent>
+          <TabsContent value="tcl">
+            <OtherBrandCarousel props={key} />
+          </TabsContent>
+        </Tabs>
+      </div>
+      <div className="md:hidden">
+        <MobileProductSlider.Child props={tabs} />
+      </div>
+    </div>
+  );
+}
+
+export {
+  ItemContainer,
+  ContainerHeader,
+  ContainerContent,
+  ProductContainer,
+  OtherBrandsContainer,
+};

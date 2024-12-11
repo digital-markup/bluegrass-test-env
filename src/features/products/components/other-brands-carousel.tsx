@@ -9,6 +9,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import ItemCard from "@/features/public/components/item-card";
+import { ProductCardSkeleton } from "@/components/product-card-skeleton";
 
 interface OtherBrandCarouselProps {
   props: string;
@@ -35,11 +36,17 @@ function OtherBrandCarousel({ props }: OtherBrandCarouselProps) {
     <div className="w-full h-full">
       <BaseCarousel>
         <CarouselContent>
-          {products.map((item, idx) => (
-            <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/4">
-              <ItemCard key={item.id} {...item} />
-            </CarouselItem>
-          ))}
+          {products.length > 0
+            ? products.map((item, idx) => (
+                <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/4">
+                  <ItemCard key={item.id} {...item} />
+                </CarouselItem>
+              ))
+            : [...Array(5)].map((_, i) => (
+                <section key={i} className="mx-2 my-8 w-full">
+                  <ProductCardSkeleton />
+                </section>
+              ))}
         </CarouselContent>
       </BaseCarousel>
     </div>

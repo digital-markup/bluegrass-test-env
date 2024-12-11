@@ -45,7 +45,7 @@ export default function Home() {
             <source
               src="/videos/hero-vid.mp4"
               type="video/mp4"
-              media="(min-width: 1024px)"
+              media="(min-width: 360px)"
             />
           </video>
         </div>
@@ -69,18 +69,6 @@ export default function Home() {
       </div>
       <div className="w-full bg-white flex flex-col gap-y-8">
         <div className="container mx-auto p-4 md:p-8">
-          <Header classNames="mb-6 2xl:pr-5 pt-10">
-            <h2 className="lg:text-4xl font-semibold">All Brands.</h2>
-          </Header>
-          <div className="w-full h-full pt-12">
-            <Image
-              src={"/img/apple-hero-img.jpg"}
-              alt="img-alt"
-              width={1920}
-              height={1080}
-              className="object-cover h-[400px] rounded-lg"
-            />
-          </div>
           <div className="pt-12 w-full h-full flex flex-col">
             {/* Apple section */}
             <ItemContainer>
@@ -93,7 +81,36 @@ export default function Home() {
               <ContainerContent>
                 <ProductContainer routes={BrandType.APPLE} />
                 <Link
-                  href={"/products?apple=true"}
+                  href={"/products?category=mobile&brand=apple"}
+                  className="w-full flex items-center justify-center pt-8"
+                >
+                  <Button variant="secondary">Browse All</Button>
+                </Link>
+              </ContainerContent>
+            </ItemContainer>
+          </div>
+          <div className="w-full h-full pt-12">
+            <Image
+              src={"/img/apple-hero-img.jpg"}
+              alt="img-alt"
+              width={1920}
+              height={1080}
+              className="object-cover h-[400px] rounded-lg"
+            />
+          </div>
+          <div className="pt-12 w-full h-full flex flex-col">
+            {/* Samsung section */}
+            <ItemContainer>
+              <ContainerHeader>
+                <ItemsHeader
+                  title="Samsung"
+                  subTitle="Shop Samsung products and pick what best for you"
+                />
+              </ContainerHeader>
+              <ContainerContent>
+                <ProductContainer routes={BrandType.SAMSUNG} />
+                <Link
+                  href={"/products?category=mobile&brand=samsung"}
                   className="w-full flex items-center justify-center pt-8"
                 >
                   <Button variant="secondary">Browse All</Button>
@@ -110,43 +127,14 @@ export default function Home() {
               className="object-cover h-[600px] rounded-lg"
             />
           </div>
-          <div className="pt-12 w-full h-full flex flex-col">
-            {/* Samsung section */}
-            <ItemContainer>
-              <ContainerHeader>
-                <ItemsHeader
-                  title="Samsung"
-                  subTitle="Shop Samsung products and pick what best for you"
-                />
-              </ContainerHeader>
-              <ContainerContent>
-                <ProductContainer routes={BrandType.SAMSUNG} />
-                <Link
-                  href={"/products?apple=true"}
-                  className="w-full flex items-center justify-center pt-8"
-                >
-                  <Button variant="secondary">Browse All</Button>
-                </Link>
-              </ContainerContent>
-            </ItemContainer>
-          </div>
           {/* Other products section */}
-          <div className="w-full h-full pt-12">
-            <Image
-              src={"/img/other-phones-hero.webp"}
-              alt="img-alt"
-              width={1920}
-              height={1080}
-              className="object-cover h-[600px] rounded-lg"
-            />
-          </div>
           <div className="pt-12 w-full h-full flex flex-col">
             {/* Other Brands section */}
             <ItemContainer>
               <ContainerHeader>
                 <ItemsHeader
-                  title="Other Brands"
-                  subTitle="Browse other brands and pick what best for you"
+                  title="Other"
+                  subTitle="Browse all the other brands and pick what best for you"
                 />
               </ContainerHeader>
               <ContainerContent>
@@ -160,13 +148,22 @@ export default function Home() {
               </ContainerContent>
             </ItemContainer>
           </div>
+          <div className="w-full h-full pt-12">
+            <Image
+              src={"/img/other-phones-hero.webp"}
+              alt="img-alt"
+              width={1920}
+              height={1080}
+              className="object-cover h-[600px] rounded-lg"
+            />
+          </div>
         </div>
       </div>
       <div className="bg-black text-white">
         <div className="container mx-auto p-4 md:p-8">
           <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 justify-start items-start">
-            <h2 className="lg:text-4xl font-semibold">Unlisted.</h2>
-            <p>Other accessories are listed here</p>
+            <h2 className="lg:text-4xl font-semibold">Explore.</h2>
+            <p>Discover our products by unlisted categories</p>
           </Header>
           <div className="pt-12 w-full h-full">
             {/* Unlisted section */}

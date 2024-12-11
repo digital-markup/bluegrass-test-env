@@ -77,11 +77,11 @@ async function SingleProductPage({
               {product.additional_information.map((info: any, idx: number) => (
                 <div key={idx} className="flex flex-col gap-4 px-0 items-start">
                   <h2 className="font-bold text-xl">{info.title}</h2>
-                  {info.description.map((item: any, idx: number) => (
+                  {/* {info.description.map((item: any, idx: number) => (
                     <p key={idx} className="text-slate-500">
                       {item}
                     </p>
-                  ))}
+                  ))} */}
                 </div>
               ))}
             </div>

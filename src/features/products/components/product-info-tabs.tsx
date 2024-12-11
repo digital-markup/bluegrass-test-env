@@ -36,11 +36,11 @@ function ProductInfoTabs({
                 >
                   <h2 className="font-bold text-xl">{item.title}</h2>
                   <ul className="flex flex-col gap-y-2">
-                    {item.description.map((item, index) => (
+                    {/* {item.description.map((item, index) => (
                       <li key={index}>
                         <p className="text-slate-500">{item}</p>
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </div>
               ))}

@@ -3,12 +3,15 @@ import {
   Carousel as BaseCarousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import React from "react";
 import { Product } from "../utils/interfaces/Iproduct";
 import { getProductsByType } from "@/db/queries/getProducts.query";
 import ItemCard from "@/features/public/components/item-card";
 import NewProductCard from "./new-product-card";
+import { ProductCardSkeleton } from "@/components/product-card-skeleton";
 
 interface ProductSliderProps {
   productType: string;
@@ -36,12 +39,16 @@ function ProductSlider({ productType }: ProductSliderProps) {
     <div className="w-full h-full">
       <BaseCarousel>
         <CarouselContent>
-          {items.map((item, idx) => (
-            <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/4">
-              <ItemCard key={item.id} {...item} />
-            </CarouselItem>
-          ))}
+          {items.length > 0
+            ? items.map((item, idx) => (
+                <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/4">
+                  <ItemCard key={item.id} {...item} />
+                </CarouselItem>
+              ))
+            : [...Array(5)].map((_, i) => <section key={i} className="mx-2 w-full"><ProductCardSkeleton /></section>)}
         </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
       </BaseCarousel>
     </div>
   );

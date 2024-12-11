@@ -36,9 +36,9 @@ function AccessoriesContainer({ routes }: AccessoriesContainerProps) {
   return (
     <div className="w-full h-full">
       <div className="container mx-auto p-4 md:p-8 hidden md:block">
-        <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 justify-start items-start">
-          <h2 className="lg:text-4xl font-semibold">Accessories.</h2>
-          <p>Other accessories are listed here</p>
+        <Header classNames="mb-6 2xl:pr-5 pt-10 flex-col gap-y-2 justify-center items-center">
+          <h2 className="lg:text-4xl font-semibold">Other Accessories.</h2>
+          <p>Explore our other accessories</p>
         </Header>
         {/* Accessories go here */}
         <ItemContainer>

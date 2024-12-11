@@ -37,7 +37,7 @@ function MainProductContainer({
                   alt="main-image"
                   width={1920}
                   height={1080}
-                  className="md:object-cover md:h-[590px] rounded-md"
+                  className="md:object-contain md:h-[590px] rounded-md"
                   placeholder="blur"
                   blurDataURL={url}
                   decoding="async"

@@ -20,7 +20,7 @@ async function Navbar({ className, slug }: NavbarProps) {
           slug === "home"
             ? "backdrop-blur-md bg-gray-800/60"
             : "bg-white text-slate-800",
-          "w-full h-14 justify-center xl:px-36 hidden md:flex fixed z-50 shadow"
+          "w-full h-12 justify-center xl:px-36 px-6 hidden md:flex fixed z-50 shadow"
         )}
       >
         {/* Mobile Navbar */}
@@ -75,7 +75,7 @@ async function MobileNavbar({ slug }: NavbarProps) {
         slug === "home"
           ? "bg-gray-800/60 backdrop-blur-md text-white"
           : "bg-white",
-        "w-full h-12 py-8 px-6 flex justify-between items-center shadow-md fixed z-50"
+        "w-full h-10 py-6 px-6 flex justify-between items-center shadow-md fixed top-0 z-50"
       )}
     >
       {slug === "home" ? (

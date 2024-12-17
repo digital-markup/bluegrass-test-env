@@ -13,8 +13,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import ItemCard from "@/features/public/components/item-card";
 
@@ -49,7 +47,7 @@ function MobileProductSlider({ props }: MobileProductSliderProps) {
               key={item.key}
               value={item.value}
               aria-label="Toggle iphone"
-              className="data-[state=on]:bg-blue-600 data-[state=on]:text-white"
+              className="data-[state=on]:bg-blue-600 data-[state=on]:text-white bg-blue-50 text-blue-500 px-7"
               onClick={() => onFetch(item.key)}
             >
               <span className="text-sm font-medium">{item.value}</span>
@@ -62,13 +60,11 @@ function MobileProductSlider({ props }: MobileProductSliderProps) {
         <Carousel>
           <CarouselContent>
             {products.map((item: any) => (
-              <CarouselItem key={item.id} className="basis-1/2">
+              <CarouselItem key={item.id} className="basis-auto">
                 <ItemCard key={item.id} {...item} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
       </div>
     </>
@@ -108,7 +104,7 @@ MobileProductSlider.Child = function MobileProductSliderChild({
               key={item.key}
               value={item.value}
               aria-label="Toggle huawei"
-              className="data-[state=on]:bg-blue-600 data-[state=on]:text-white"
+              className="data-[state=on]:bg-blue-600 data-[state=on]:text-white bg-blue-50 text-blue-500 px-7"
               onClick={() => onFetch(item.key)}
             >
               <span className="text-sm font-medium">{item.value}</span>
@@ -121,13 +117,11 @@ MobileProductSlider.Child = function MobileProductSliderChild({
         <Carousel>
           <CarouselContent>
             {products.map((item: any) => (
-              <CarouselItem key={item.id} className="basis-1/2">
+              <CarouselItem key={item.id} className="basis-auto">
                 <ItemCard key={item.id} {...item} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
       </div>
     </div>

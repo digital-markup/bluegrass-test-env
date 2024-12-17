@@ -33,11 +33,13 @@ function TypeScrollBar({ params }: TypeScrollBarProps) {
   };
 
   return (
-    <>
+    <section className="px-2">
       {routes.length > 0 && (
-        <div className="w-full min-h-32 bg-slate-100/60 md:px-8 lg:px-40 py-0 flex justify-center md:justify-center items-center">
+        <div className="w-full min-h-32 bg-white md:px-8 lg:px-40 py-0 flex justify-center md:justify-center items-center">
           <Carousel className="w-full">
-            <CarouselContent className={cn(routes.length < 3 ? "justify-center" : "-ml-2")}>
+            <CarouselContent
+              className={cn(routes.length < 3 ? "justify-center" : "-ml-2")}
+            >
               {routes.map(
                 (route: {
                   id: React.Key | null | undefined;
@@ -47,7 +49,7 @@ function TypeScrollBar({ params }: TypeScrollBarProps) {
                 }) => (
                   <CarouselItem
                     key={route.id}
-                    className="basis-1/2 md:basis-1/5 md:pl-1"
+                    className="basis-1/4 md:basis-1/5 md:pl-1 ml-3 md:ml-0"
                   >
                     <figure
                       className="flex flex-col gap-y-2 justify-center items-center cursor-pointer"
@@ -58,20 +60,22 @@ function TypeScrollBar({ params }: TypeScrollBarProps) {
                         alt={route.slug}
                         width={100}
                         height={100}
-                        className="object-contain h-[40px] w-[40px] rounded"
+                        className="object-contain md:h-[40px] md:w-[40px] rounded h-[30px] w-[30px]"
                       />
-                      <figcaption className="text-xs text-black">{route.name}</figcaption>
+                      <figcaption className="text-xs text-black">
+                        {route.name}
+                      </figcaption>
                     </figure>
                   </CarouselItem>
                 )
               )}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:block" />
+            <CarouselNext className="hidden md:block" />
           </Carousel>
         </div>
       )}
-    </>
+    </section>
   );
 }
 

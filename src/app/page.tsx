@@ -1,5 +1,4 @@
 import Footer from "@/components/footer";
-import OverlayText from "@/components/overlay-text";
 import ServicesEffectGridLayout from "@/components/services-effect-grid-layout";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -27,8 +26,7 @@ export default function Home() {
   return (
     <main className="w-full min-h-screen">
       <Navbar slug="home" />
-      <header className="bg-black md:min-h-screen">
-        <OverlayText />
+      <header className="bg-black">
         {/* <picture className="opacity-75">
           <source srcSet="/img/hero-desktop.jpg" media="(min-width: 1024px)" />
           <source media="(min-width: 768px)" srcSet="/img/hero-medium.jpg" />
@@ -40,17 +38,19 @@ export default function Home() {
             className="object-cover h-[720px] opacity-85"
           />
         </picture> */}
-        <div className="w-full flex absolute md:top-1 top-28 opacity-75">
-          <video className="w-full" autoPlay loop muted playsInline>
+        <div className="whitespace-nowrap h-12"></div>
+        <div className="w-full h-[360px] md:h-screen flex opacity-75">
+          <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
             <source
               src="/videos/hero-vid.mp4"
               type="video/mp4"
               media="(min-width: 360px)"
+              className="w-full"
             />
           </video>
         </div>
       </header>
-      <div className="flex flex-col gap-3 w-full bg-black pb-12 md:pt-52 pt-48">
+      <div className="flex flex-col gap-3 w-full bg-black pb-12 md:pt-52 pt-12">
         <section className="text-white w-full p-4 md:p-8">
           <Header classNames="container mx-auto">
             <h2 className="text-white lg:text-4xl 2xl:pl-16 pl-6">
@@ -140,7 +140,7 @@ export default function Home() {
               <ContainerContent>
                 <OtherBrandsContainer />
                 <Link
-                  href={"/products?apple=true"}
+                  href={"/products?category=mobile"}
                   className="w-full flex items-center justify-center pt-8"
                 >
                   <Button variant="secondary">Browse All</Button>
